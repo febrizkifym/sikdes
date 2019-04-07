@@ -16,9 +16,6 @@ Auth::routes();
 Route::get('/','HomeController@index');
 Route::get('/usiachart','HomeController@usia');
 Route::get('/ambilnik','MutasiController@ambilnik');
-Route::get('/home',function(){
-    return redirect('/');
-});
 
 Route::group(['middleware'=>['auth']],function(){
 //routing penduduk

@@ -31,6 +31,13 @@ class TabelTransaksi extends Migration
             $table->unsignedTinyInteger('id_pekerjaan')->index();
             $table->unsignedTinyInteger('id_cacat')->index();
         });
+        Schema::create('t_mutasi',function(Blueprint $table){
+            $table->increments('id');
+            $table->unsignedInteger('id_penduduk')->index();
+            $table->tinyInteger('status'); //1 = datang , 2 = pergi , 3 = meninggal
+            $table->text('keterangan');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -40,6 +47,8 @@ class TabelTransaksi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExist('t_penduduk');
+        Schema::dropIfExist([
+            't_penduduk','t_mutasi'
+        ]);
     }
 }

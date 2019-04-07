@@ -76,6 +76,9 @@
             margin-top:15px;
             width:100px;
         }
+        .invalid-feedback{
+            color:#770000;
+        }
     </style>
 </head>
 <body>
@@ -89,7 +92,17 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Username / Email Address" required autofocus>
+            @if ($errors->has('email'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+            @endif
             <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
+            @if ($errors->has('password'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+            @endif
             <button class="submit" type="submit">Login</button>
         </form>
         <span class="copyright">Copyright. 2019</span>
