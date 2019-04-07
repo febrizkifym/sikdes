@@ -43,7 +43,7 @@ class SeederTabelMaster extends Seeder
             ['pekerjaan' => 'Karyawan Perusahaan Swasta'],
             ['pekerjaan' => 'Karyawan Perusahaan Pemerintah'],
             ['pekerjaan' => 'Jasa'],
-            ['pekerjaan' => 'Honorer']
+            ['pekerjaan' => 'Honorer'],
             ['pekerjaan' => 'Pelajar'],
         ]);
         DB::table('m_agama')->insert([
