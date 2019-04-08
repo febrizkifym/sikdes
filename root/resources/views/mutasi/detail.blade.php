@@ -58,6 +58,7 @@
                     <a href="{{route('penduduk.detail',$m->penduduk->id)}}"><button class="btn btn-success">Detail Penduduk</button></a>
                     <a href="{{route('mutasi.edit',$m->id)}}"><button class="btn btn-primary">Edit Data</button></a> 
                     <a href="{{route('mutasi.delete',$m->id)}}"><button class="btn btn-danger">Hapus Data</button></a> 
+                  <a href="{{url('mutasi')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
             </div>
         </div>
     </div>

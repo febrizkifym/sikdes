@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config('app.name', 'Sistem Informasi Kependudukan') }}</title>
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="description" content="Sistem Informasi Kependudukan Desa Tingkohubu, Kecamatan Suwawa, Kabupaten Bone Bolango">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">-->
@@ -22,6 +22,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/b-1.5.4/b-print-1.5.4/r-2.2.2/rg-1.1.0/datatables.min.css"/>
     <link rel="stylesheet" href="{{asset('css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <style>
+        .filtered{
+            font-weight:bold;
+    }
+    </style>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 

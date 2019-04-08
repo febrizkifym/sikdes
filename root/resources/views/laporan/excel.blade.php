@@ -12,8 +12,8 @@
             <th>Kedudukan</th>
             <th>Kewarganegaraan</th>
             <th>Agama</th>
-            <th>Pendidikan</th>
             <th>Pekerjaan</th>
+            <th>Pendidikan</th>
         </tr>
     </thead>
     <tbody>

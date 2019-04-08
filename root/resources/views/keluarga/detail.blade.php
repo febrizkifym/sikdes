@@ -64,7 +64,7 @@
                     </tr>
                     @endforeach
                     </table>
-                    <a href="{{url('keluarga')}}"><button class="btn btn-info">Kembali</button></a>
+                    <a href="{{url('keluarga')}}"><button class="btn btn-secondary">Kembali</button></a>
                 </div>
             </div>
         </div>

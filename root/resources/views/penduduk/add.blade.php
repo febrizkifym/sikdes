@@ -162,7 +162,8 @@
                         </div>
                    </div>
                   </div>
-                  <button class="btn btn-success">Submit</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{url('penduduk')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
                 </form>
             </div>
         </div>

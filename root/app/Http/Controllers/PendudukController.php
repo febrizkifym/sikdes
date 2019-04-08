@@ -12,13 +12,21 @@ class PendudukController extends Controller
 		$this->middleware('auth');
 	}
     public function index(Request $r){
-        if($r->has('agama')){
-            $penduduk = Penduduk::where('id_agama',$r->agama)->get();
-        }elseif($r->has('pekerjaan')){
-            $penduduk = Penduduk::where('id_pekerjaan',$r->pekerjaan)->get();
-        }elseif($r->has('pendidikan')){
-            $penduduk = Penduduk::where('id_pend',$r->pendidikan)->get();
-        }elseif($r->has('usia_dari')){
+        
+        $penduduk = Penduduk::where('id','>',0);
+        if($r->has('agama') && $r->agama !== null){
+            $penduduk->where('id_agama',$r->agama);
+        }
+        if($r->has('pekerjaan') && $r->pekerjaan !== null){
+            $penduduk->where('id_pekerjaan',$r->pekerjaan);
+        }
+        if($r->has('pendidikan') && $r->pendidikan !== null){
+            $penduduk->where('id_pend',$r->pendidikan);
+        }
+        if($r->has('usia_dari') && $r->usia_dari !== null){
+            if($r->usia_ke == null){
+                return redirect('penduduk')->with('warning','Mohon lengkapi form filter');
+            }
             $getusia = Penduduk::get(['id','tgl_lahir']);
             $usia = collect();
             foreach($getusia as $get){
@@ -35,14 +43,12 @@ class PendudukController extends Controller
                        $t['id_penduduk']
                     ]);
                 }
-                $penduduk = Penduduk::whereIn('id',$query)->get();
+                $penduduk->whereIn('id',$query);
             }else{
-                $penduduk = Penduduk::where('id',-1)->get();
+                $penduduk->where('id',-1);
             }
         }
-        else{
-            $penduduk = Penduduk::all();
-        }
+        $penduduk = $penduduk->get();
         return view('penduduk.index',['penduduk'=>$penduduk]);
     }
     public function add(){

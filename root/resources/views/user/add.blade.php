@@ -38,7 +38,8 @@
                             <input type="password" class="form-control" name="password2" required>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <a href="{{url('user')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
                         </div>
                     </form>
                 </div>
