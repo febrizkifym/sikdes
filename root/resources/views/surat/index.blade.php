@@ -3,9 +3,10 @@
 <div class="row">
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header"><strong class="card-title">Data Mutasi Penduduk</strong></div>
+        <div class="card-header"><strong class="card-title">Surat Kematian</strong></div>
         <div class="card-body">
-           <a href="{{route('mutasi.add')}}"><button class="btn btn-success">Tambah Data</button></a>
+           <a href="{{route('mutasi.add')}}"><button class="btn btn-success">\
+           </button></a>
            <div class="clearfix" style="margin-bottom:15px;"></div>
             <table class="table table-hover table-striped">
                 <tr>

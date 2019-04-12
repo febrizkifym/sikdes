@@ -27,7 +27,7 @@ class MutasiController extends Controller
         $m = new Mutasi;
         $penduduk = Penduduk::where('nik',$r->nik)->first();
         $m->id_penduduk = $penduduk->id;
-        $m->jenis_mutasi = $r->jenis_mutasi;
+        $m->status = $r->jenis_mutasi;
         $m->created_at = $r->tanggal;
         $m->keterangan = $r->keterangan;
         $m->save();
@@ -45,7 +45,7 @@ class MutasiController extends Controller
         $m = Mutasi::find($id);
         $penduduk = Penduduk::where('nik',$r->nik)->first();
         $m->id_penduduk = $penduduk->id;
-        $m->jenis_mutasi = $r->jenis_mutasi;
+        $m->status = $r->jenis_mutasi;
         $m->created_at = $r->tanggal;
         $m->keterangan = $r->keterangan;
         $m->save();

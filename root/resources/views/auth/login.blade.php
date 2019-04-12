@@ -12,7 +12,8 @@
             margin:0;
         }
         body{
-            background-image:url({{asset('images/blurry.jpg')}});
+            background:url({{asset('images/blurry.jpg')}}) no-repeat center center fixed;
+            background-size:cover;
             color:#3c3c3c;
         }
         .brand{

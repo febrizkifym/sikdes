@@ -52,12 +52,11 @@
                         <a href="{{url('/mutasi')}}"><i class="menu-icon fa fa-recycle"></i>Mutasi Penduduk </a>
                     </li>
                     
-<!--
                     <li class="menu-title">Pembuatan Surat</li>
                     <li>
-                        <a href="#"><i class="menu-icon fa fa-envelope"></i>Surat Pindah </a>
+                        <a href="{{url('/surat/kematian')}}"><i class="menu-icon fa fa-envelope"></i>Surat Kematian </a>
+                        <a href="{{url('/surat/kelahiran')}}"><i class="menu-icon fa fa-envelope"></i>Surat Kelahiran </a>
                     </li>
--->
                     @endif
                     <li class="menu-title">Laporan</li>
                     <li>

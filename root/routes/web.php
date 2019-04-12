@@ -66,3 +66,10 @@ Route::group(['middleware'=>['auth']],function(){
 //routing laporan
 Route::get('/laporan','LaporanController@index');
 Route::post('/laporan/cetak','LaporanController@cetak');
+
+//routing surat
+Route::get('/surat','SuratController@index');
+Route::get('/surat/kematian','SuratController@formKematian');
+Route::post('/surat/kematian/cetak','SuratController@cetakKematian');
+Route::get('/surat/kelahiran','SuratController@formKelahiran');
+Route::post('/surat/kelahiran/cetak','SuratController@cetakKelahiran');

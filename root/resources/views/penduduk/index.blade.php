@@ -92,7 +92,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">No. KK</th>
+                            <th scope="col">NIK</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Tempat Lahir</th>
@@ -109,7 +109,7 @@
                     @foreach($penduduk as $p)
                         <tr>
                             <td>{{$id++}}</td>
-                            <td>{{$p->no_kk}}</td>
+                            <td>{{$p->nik}}</td>
                             <td>{{$p->nama}}</td>
                             <td>
                                 @if($p->jk == 1)

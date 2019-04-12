@@ -15,9 +15,60 @@
         td, th{padding:2px 3px;}
         h1{font-size:16pt;}
         strong{margin-top:5px;}
+        body{
+            font-family:"Bookman Old Style";
+            font-size:9pt;
+        }
+        .a4wrapper{
+            margin:15px auto;
+            width:595px;
+            height:842px;
+            background-color:#FFF;
+        }
+        .margin{
+            padding:20px 50px;
+        }
+        header{
+            font-family:"Times New Roman";
+            font-weight: bold;
+            text-align:center;
+            border-bottom:4px #000;
+            border-bottom-style: double;
+            padding-bottom:5px;
+        }
+        .kop{
+            font-size:14pt;
+            margin-bottom:10px;
+        }
+        .alamat{
+            font-size:11pt;
+            font-style:oblique;
+            display:block;
+        }
+        .logo{
+            width:85px;
+            float:left;
+            position:absolute;
+            left:1000px;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <div class="row">
+            <div class="col-2">
+                <img src="{{asset('images/logo2.png')}}" alt="logo" class="logo">
+            </div>
+            <div class="col-10">
+                <span class="kop">PEMERINTAH KABUPATEN BONE BOLANGO<br>
+                KECAMATAN SUWAWA<br>
+                DESA TINGKOHUBU</span>
+                <span class="alamat">
+                    Jln. Lorong Selatan Belakang SMP Neg. I Suwawa Kec. Suwawa Kab. Bone Bolango
+                </span>
+            </div>
+        </div>
+    </header>
     <h1>Laporan Kependudukan Desa Tingkohubu</h1>
     <h2>Tanggal : {{date('d F Y')}}</h2>
     <table class="table table-sm">
