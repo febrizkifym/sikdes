@@ -14,7 +14,9 @@ class PendudukController extends Controller
     public function index(Request $r){
         
         $penduduk = Penduduk::where('id','>',0);
-        if($r->has('agama') && $r->agama !== null){
+        if($r->has('status') && $r->status !== null){
+            $penduduk->where('deleted_at',true);
+        }if($r->has('agama') && $r->agama !== null){
             $penduduk->where('id_agama',$r->agama);
         }
         if($r->has('pekerjaan') && $r->pekerjaan !== null){
@@ -109,7 +111,7 @@ class PendudukController extends Controller
     	return redirect('/penduduk')->with('success','Update Data Berhasil');
     }
     public function detail($id){
-        $penduduk = Penduduk::find($id);
+        $penduduk = Penduduk::withTrashed()->find($id);
         return view('penduduk.detail',['p'=>$penduduk]);
     }
     public function delete($id){

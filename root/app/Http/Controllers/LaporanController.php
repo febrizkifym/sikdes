@@ -26,6 +26,12 @@ class LaporanController extends Controller
         if($r->has('pendidikan') && $r->pendidikan !== null){
             $penduduk->where('id_pend',$r->pendidikan);
         }
+        if($r->has('status') && $r->status !== null){
+            $status = $r->status;
+            if($status == 'mati'){
+                $penduduk->onlyTrashed();
+            }
+        }
         if($r->has('usia_dari') && $r->usia_dari !== null){
             if($r->usia_ke == null){
                 return redirect('penduduk')->with('warning','Mohon lengkapi form filter');
@@ -61,3 +67,4 @@ class LaporanController extends Controller
         }
     }
 }
+    

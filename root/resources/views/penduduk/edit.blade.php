@@ -3,10 +3,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
-                <strong class="card-title">Entri Data Penduduk</strong>
-            </div>
             <div class="card-body">
+                   <h4 class="header-title">Edit Data Penduduk</h4>
+                   <hr>
                 <form action="{{route('penduduk.update',$p)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                   <div class="row">            
                        <div class="col-lg-6">

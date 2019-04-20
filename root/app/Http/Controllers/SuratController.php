@@ -4,18 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Penduduk;
+use App\Mutasi;
 use PDF;
 
 class SuratController extends Controller
 {
     public function index(){
-        //
+        $penduduk = Penduduk::all();
+        return view('surat.index',['penduduk'=>$penduduk]);
     }
     public function formKematian(){
-        return view('surat.form_kematian');
+        $penduduk = Penduduk::all();
+        return view('surat.form_kematian',['penduduk'=>$penduduk]);
     }
     public function formKelahiran(){
-        return view('surat.form_kelahiran');
+        $penduduk = Penduduk::all();
+        $ibu = Penduduk::where('jk',2)->get();
+        $ayah = Penduduk::where('jk',1)->get();
+        return view('surat.form_kelahiran',['penduduk'=>$penduduk,'ayah'=>$ayah,'ibu'=>$ibu]);
+    }
+    public function loadData(Request $r){
+        if($r->has('q')){
+            $cari = $r->q;
+            $data = Penduduk::where('nama','LIKE','%'.$cari.'%')->get();
+            return response()->json($data);
+        }
     }
     public function cetakKematian(Request $r){
         $data = [
@@ -33,8 +46,14 @@ class SuratController extends Controller
         ];
         $p = Penduduk::where('nik',$r->nik)->first();
         if($p){
-        $pdf = PDF::loadView('surat.pdf_kematian',['data'=>$data,'p'=>$p])->setPaper('a4', 'portrait');
-        return $pdf->stream();
+            $m = new Mutasi;
+            $m->id_penduduk = $p->id;
+            $m->status = 3;
+            $m->created_at = $r->tgl_meninggal;
+            $m->save();
+            $mati = Penduduk::where('nik',$r->nik)->delete();
+            $pdf = PDF::loadView('surat.pdf_kematian',['data'=>$data,'p'=>$p])->setPaper('a4', 'portrait');
+            return $pdf->stream();
         }else{
             return redirect('surat/kematian')->withInput()->with('error','Penduduk tidak ditemukan');
         }

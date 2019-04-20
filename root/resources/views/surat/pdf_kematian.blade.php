@@ -69,15 +69,14 @@
             text-align:center;
             font-size:12pt;
             display:block;
-            margin-top:100px;
+            margin-top:50px;
             margin-left:0;
             margin-right:250px;
         }
         .ttd-kiri, .ttd-kanan{
+/*            border:1px solid #000;*/
             display:inline-block;
-        }
-        .ttd-kiri{
-/*            margin-right:0;*/
+            width:295px;
         }
         .jabatan{
             margin-bottom:100px;

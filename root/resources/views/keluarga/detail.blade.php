@@ -3,8 +3,9 @@
 <div class="row">
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header"><strong class="card-title">Detail Keluarga</strong></div>
         <div class="card-body">
+              <h4 class="header-title">Detail Keluarga</h4>
+              <hr>
             <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Nomor Kartu Keluarga :</label></div>
                 <div class="col-12 col-md-9">
@@ -14,7 +15,7 @@
             <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Jumlah Anggota Keluarga :</label></div>
                 <div class="col-12 col-md-9">
-                    <p class="form-control-static">{{$keluarga->count()}}</p>
+                    <p class="form-control-static">{{$keluarga->count()}} Orang</p>
                 </div>
             </div>
             <div class="row form-group">
@@ -22,13 +23,15 @@
             </div>
             <div class="row form-group">
                 <div class="col col-md-12">
-                   <table class="table table-bordered table-hover">
+                   <table class="table table-bordered table-sm table-hover">
                     <tr>
                         <th>#</th>
+                        <th>NIK</th>
                         <th>Nama Lengkap</th>
                         <th>Jenis Kelamin</th>
                         <th>Kedudukan</th>
                         <th>Usia</th>
+                        <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                     <?php
@@ -38,6 +41,7 @@
                     @foreach($keluarga->get() as $k)
                     <tr>
                         <td>{{$id++}}</td>
+                        <td>{{$k['nik']}}</td>
                         <td>{{$k->nama}}</td>
                         <td>
                             @if($k->jk == 1)
@@ -59,7 +63,14 @@
                         </td>
                         <td>{{Carbon::parse($k->tgl_lahir)->diff(Carbon::now())->format('%y Tahun')}}</td>
                         <td>
-                            <a href="{{route('penduduk.detail',$k->id)}}"><button class="btn btn-primary">Detail</button></a>
+                            @if($k['deleted_at'] == true)
+                            Meninggal
+                            @else
+                            -
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{route('penduduk.detail',$k->id)}}"><button class="btn btn-sm btn-primary">Detail</button></a>
                         </td>
                     </tr>
                     @endforeach

@@ -30,6 +30,8 @@ class TabelTransaksi extends Migration
             $table->unsignedTinyInteger('id_pend')->index();
             $table->unsignedTinyInteger('id_pekerjaan')->index();
             $table->unsignedTinyInteger('id_cacat')->index();
+            $table->timestamps();
+            $table->softDeletes();
         });
         Schema::create('t_mutasi',function(Blueprint $table){
             $table->increments('id');

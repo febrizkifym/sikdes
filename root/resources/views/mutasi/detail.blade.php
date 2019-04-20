@@ -3,8 +3,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header"><strong class="card-title">Detail Mutasi Penduduk</strong></div>
             <div class="card-body">
+           <h4 class="title-header">Edit Mutasi Penduduk</h4>
+           <hr>
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Nama Lengkap</label></div>
                         <div class="col-12 col-md-9">

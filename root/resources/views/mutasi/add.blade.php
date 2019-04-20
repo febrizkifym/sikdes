@@ -3,8 +3,9 @@
 <div class="row">
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header"><strong class="card-title">Tambah Data Mutasi</strong></div>
         <div class="card-body">
+           <h4 class="header-title">Tambah Mutasi Penduduk</h4>
+           <hr>
             <div class="row">
                 <div class="col-lg-6">
                     <form method="POST" action="{{route('mutasi.post')}}">

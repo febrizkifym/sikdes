@@ -1,48 +1,56 @@
 @extends('layouts.template')
 @section('content')
+@php
+    use Illuminate\Support\Facades\DB;
+    $agama = DB::table('m_agama')->get();
+    $pendidikan = DB::table('m_pendidikan')->get();
+    $pekerjaan = DB::table('m_pekerjaan')->get();
+    $cacat = DB::table('m_cacat')->get();
+@endphp
 <div class="row">
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card-header"><strong class="card-title">Surat Kematian</strong></div>
-        <div class="card-body">
-           <a href="{{route('mutasi.add')}}"><button class="btn btn-success">\
-           </button></a>
-           <div class="clearfix" style="margin-bottom:15px;"></div>
-            <table class="table table-hover table-striped">
-                <tr>
-                    <th>#</th>
-                    <th>Nomor Induk</th>
-                    <th>Nama Lengkap</th>
-                    <th>Jenis Mutasi</th>
-                    <th>Tanggal Mutasi</th>
-                    <th>Aksi</th>
-                </tr>
-                <?php $id=1 ?>
-                @foreach($mutasi as $m)
-                <tr>
-                    <td>{{$id++}}</td>
-                    <td>{{$m->penduduk->nik}}</td>
-                    <td>{{$m->penduduk->nama}}</td>
-                    <td>
-                        @if($m->status == 1)
-                        Datang
-                        @elseif($m->status == 2)
-                        Pergi
-                        @elseif($m->status = 3)
-                        Meninggal
-                        @endif
-                    </td>
-                    <td>{{date('d F Y',strtotime($m->created_at))}}</td>
-                    <td>
-                        <a href="{{route('mutasi.detail',$m->id)}}"><button class="btn btn-sm btn-primary">Detail</button></a>
-                        <a href="{{route('mutasi.delete',$m->id)}}"><button class="btn btn-sm btn-danger">Hapus</button></a>
-                    </td>
-                </tr>
-                @endforeach
-            </table>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Pembuatan Surat</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form method="POST" action="{{url('surat')}}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="nik">Cari Penduduk</label>
+                                <select name="nik" id="penduduk" class="form-control">
+                                    @foreach($penduduk as $p)
+                                        <option value="{{$p['nik']}}">{{$p['nik']}} - {{$p['nama']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="surat">Jenis Surat</label>
+                                <select name="surat" id="surat" class="form-control">
+                                    <option value="kematian">Surat Kematian</option>
+                                    <option value="kelahiran">Surat Kelahiran</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Buat Surat</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
 <div class="clearfix"></div>
+@endsection
+@section('js')
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#penduduk').select2({
+            theme: 'bootstrap4',
+        });
+    });
+</script>
 @endsection

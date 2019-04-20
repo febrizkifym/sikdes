@@ -70,13 +70,12 @@
         </div>
     </header>
     <h1>Laporan Kependudukan Desa Tingkohubu</h1>
-    <h2>Tanggal : {{date('d F Y')}}</h2>
     <table class="table table-sm">
         <tr>
             <th>#</th>
-            <th>Nama</th>
             <th>NIK</th>
             <th>No KK</th>
+            <th>Nama</th>
             <th>JK</th>
             <th>Tempat Lahir</th>
             <th>Tanggal Lahir</th>
@@ -139,6 +138,7 @@
         </tr>
         @endforeach
     </table>
+    <h2>Tanggal : {{date('d F Y')}}</h2>
     <strong>Dicetak oleh : {{Auth::user()->username}}</strong>
 </body>
 </html>

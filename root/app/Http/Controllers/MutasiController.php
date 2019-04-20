@@ -31,6 +31,9 @@ class MutasiController extends Controller
         $m->created_at = $r->tanggal;
         $m->keterangan = $r->keterangan;
         $m->save();
+        if($r->jenis_mutasi == 3){
+            $p = Penduduk::where('nik',$r->nik)->delete();
+        }
         return redirect('mutasi')->with('success','Input Data Berhasil');
     }
     public function detail($id){
@@ -49,10 +52,22 @@ class MutasiController extends Controller
         $m->created_at = $r->tanggal;
         $m->keterangan = $r->keterangan;
         $m->save();
+        if($r->jenis_mutasi == 3){
+            $p = Penduduk::where('nik',$r->nik)->delete();
+        }else{
+            if($penduduk->trashed()){
+                $penduduk->restore();
+            }
+        }
         return redirect('mutasi')->with('success','Update Data Berhasil');
     }
     public function delete($id){
-        Mutasi::find($id)->delete();
+        $mutasi = Mutasi::find($id);
+        $penduduk = Penduduk::withTrashed()->find($mutasi['id_penduduk']);
+        if($penduduk->trashed()){
+            $penduduk->restore();
+        }
+        $mutasi->delete();
         return redirect('mutasi')->with('success','Hapus Data Berhasil');
     }
 }

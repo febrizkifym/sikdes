@@ -9,6 +9,6 @@ class Mutasi extends Model
 {
     protected $table = 't_mutasi';
     public function penduduk(){
-        return $this->belongsTo('App\Penduduk','id_penduduk','id');
+        return $this->belongsTo('App\Penduduk','id_penduduk','id')->withTrashed();
     }
 }

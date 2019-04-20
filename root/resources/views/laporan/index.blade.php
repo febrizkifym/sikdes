@@ -10,8 +10,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header"><strong class="card-title">Laporan Data Penduduk</strong></div>
-            <div class="card-body">             
+            <div class="card-body">
+              <h4 class="title-header">Cetak Laporan Penduduk</h4>
+              <hr>             
                <div class="row">
                     <div class="col-md-12">
                         <form method="POST" action="{{url('laporan/cetak')}}">
@@ -46,6 +47,13 @@
                                                 <option value="{{$pe->id}}">{{$pe->pekerjaan}}</option>
                                                 @endforeach
                                             @endif
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pekerjaan">Status</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="hidup" selected>Hidup</option>
+                                            <option value="mati">Mati</option>
                                         </select>
                                     </div>
                                     <hr>

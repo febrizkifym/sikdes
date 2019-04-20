@@ -1,99 +1,73 @@
 @extends('layouts.template')
 @section('content')
+
 <div class="row">
-    <div class="col-lg-3 col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-1">
-                        <i class="pe-7s-user"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="stat-text"><span class="count">{{$total}}</span></div>
-                            <div class="stat-heading">Total Penduduk</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-2">
-                        <i class="pe-7s-users"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="stat-text"><span class="count">{{$total_k}}</span></div>
-                            <div class="stat-heading">Jumlah Keluarga</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-3">
-                        <i class="pe-7s-male"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="stat-text"><span class="count">{{$total_l}}</span></div>
-                            <div class="stat-heading">Penduduk Laki-laki</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-4">
-                        <i class="pe-7s-female"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="stat-text"><span class="count">{{$total_p}}</span></div>
-                            <div class="stat-heading">Penduduk Perempuan</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-lg-12">
-        <div class="card">
-        <div class="card-header"><strong class="card-title">Data Penduduk Berdasarkan Usia</strong></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-8">
-                <canvas id="usiaChart"></canvas>
-                        
+        <div class="row" style="">
+            <div class="col-md-6 mt-4">
+                <div class="card">
+                    <div class="seo-fact sbg2">
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class="ti-id-badge"></i> Total Penduduk</div>
+                            <h2>{{$total}} Orang</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+                <div class="card">
+                    <div class="seo-fact sbg4">
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class="ti-home"></i> Total Keluarga</div>
+                            <h2>{{$total_k}} Keluarga</h2>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- /# column -->
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <div class="card">
+                    <div class="seo-fact sbg1">
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class="fa fa-mars"></i> Penduduk Laki-Laki</div>
+                            <h2>{{$total_l}} Orang</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+                <div class="card">
+                    <div class="seo-fact sbg3">
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class="fa fa-venus"></i> Penduduk Perempuan</div>
+                            <h2>{{$total_p}} Orang</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Grafik Usia Penduduk</h4>
+                        <canvas id="usiaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="clearfix"></div>
+
 @endsection
 
 @section('js')
 <script>
 ( function ( $ ) {
     "use strict";
-
-    //chart usia
     var ctx = document.getElementById( "usiaChart" );
-        ctx.height = 200;
+        ctx.height = 150;
     var myChart = new Chart( ctx, {
         type: 'bar',
         data: {
@@ -104,14 +78,14 @@
                     data: {{$usia_l}},
                     borderColor: "rgba(0,90,194,0.9)",
                     borderWidth: "0",
-                    backgroundColor: "rgba(0,90,194,0.5)"
+                    backgroundColor: "rgb(77, 77, 253)"
                             },
                 {
                     label: "Perempuan",
                     data: {{$usia_p}},
                     borderColor: "rgba(194,0,67,0.9)",
                     borderWidth: "0",
-                    backgroundColor: "rgba(194,0,67,0.5)"
+                    backgroundColor: "rgb(216, 88, 79)"
                             }
                         ]
         },
@@ -132,6 +106,7 @@
             }
         }
     } );
+    
 
 } )( jQuery );
 </script>

@@ -3,9 +3,10 @@
 <div class="row">
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header"><strong class="card-title">Data Keluarga</strong></div>
         <div class="card-body">
-            <table id="bootstrap-data-table" class="table table-sm table-striped">
+              <h4 class="header-title">Data Keluarga</h4>           
+            <div class="data-tables datatable-primary">
+              <table id="bootstrap-data-table" class="table table-sm table-striped">
                <thead> 
                    <tr>
                         <th>#</th>
@@ -28,12 +29,13 @@
                         <td>{{$k['jumlah_1']+$k['jumlah_2']}}</td>
                         <td>{{$k['alamat']}}</td>
                         <td>
-                            <a href="{{route('keluarga.detail',$k['no_kk'])}}"><button class="btn btn-sm btn-primary">Detail</button></a>
+                            <a href="{{route('keluarga.detail',$k['no_kk'])}}"><button class="btn btn-xs btn-primary">Detail</button></a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>

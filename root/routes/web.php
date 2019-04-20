@@ -13,6 +13,9 @@
 
 Auth::routes();
 
+Route::get('/blank',function(){
+    return view('home');
+});
 Route::get('/','HomeController@index');
 Route::get('/usiachart','HomeController@usia');
 Route::get('/ambilnik','MutasiController@ambilnik');
@@ -70,6 +73,11 @@ Route::post('/laporan/cetak','LaporanController@cetak');
 //routing surat
 Route::get('/surat','SuratController@index');
 Route::get('/surat/kematian','SuratController@formKematian');
+Route::get('/surat/kematian/cari','SuratController@loadData');
 Route::post('/surat/kematian/cetak','SuratController@cetakKematian');
 Route::get('/surat/kelahiran','SuratController@formKelahiran');
 Route::post('/surat/kelahiran/cetak','SuratController@cetakKelahiran');
+
+//routing grafik
+Route::get('grafik/pekerjaan','GrafikController@pekerjaan');
+Route::get('grafik/pendidikan','GrafikController@pendidikan');

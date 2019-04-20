@@ -3,8 +3,8 @@
 <div class="row">
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header"><strong class="card-title">Edit Data User</strong></div>
         <div class="card-body">
+           <h4 class="title-header">Edit Data User</h4><hr>
             <div class="row">
                 <div class="col-lg-6">
                     @if (session('alert'))
