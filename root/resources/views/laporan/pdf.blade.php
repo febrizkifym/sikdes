@@ -5,7 +5,7 @@
     <title>laporan</title>
     <style>
         *{
-            font-size:10pt;
+            font-size:9pt;
         }
         table{width:100%;}
         table, tr, td, th{
@@ -81,10 +81,9 @@
             <th>Tanggal Lahir</th>
             <th>Status</th>
             <th>Kedudukan</th>
-            <th>Kewarganegaraan</th>
             <th>Agama</th>
-            <th>Pendidikan</th>
             <th>Pekerjaan</th>
+            <th>Pendidikan</th>
         </tr>
         <?php 
         use Carbon\Carbon;
@@ -121,15 +120,6 @@
                 Anak Kandung
                 @elseif($d->kedudukan==4)
                 Anak Angkat
-                @endif
-            </td>
-            <td>
-                @if($d->warganegara==1)
-                WNI
-                @elseif($d->warganegara==2)
-                WNA
-                @elseif($d->warganegara==3)
-                Dwi Warga Negara
                 @endif
             </td>
             <td>{{$agama->agama}}</td>

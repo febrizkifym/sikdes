@@ -9,11 +9,11 @@
             <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Nomor Kartu Keluarga :</label></div>
                 <div class="col-12 col-md-9">
-                    <p class="form-control-static">{{$kepala_k->no_kk}}</p>
+                    <p class="form-control-static">{{$keluarga->first()->no_kk}}</p>
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col col-md-3"><label class=" form-control-label">Jumlah Anggota Keluarga :</label></div>
+                <div class="col col-md-3"><label class=" form-control-label">Anggota Keluarga Terdaftar :</label></div>
                 <div class="col-12 col-md-9">
                     <p class="form-control-static">{{$keluarga->count()}} Orang</p>
                 </div>
@@ -38,7 +38,7 @@
                         use Carbon\Carbon;
                         $id=1;
                     ?>
-                    @foreach($keluarga->get() as $k)
+                    @foreach($list_keluarga as $k)
                     <tr>
                         <td>{{$id++}}</td>
                         <td>{{$k['nik']}}</td>
@@ -75,6 +75,8 @@
                     </tr>
                     @endforeach
                     </table>
+                    <a href="{{route('penduduk.add')}}?no_kk={{$keluarga->first()->no_kk}}"><button class="btn btn-primary">Tambah Anggota Keluarga</button></a>
+<!--                    <a href="{{url('laporan/keluarga/'.$keluarga->first()->no_kk)}}"><button class="btn btn-success">Cetak Laporan</button></a>-->
                     <a href="{{url('keluarga')}}"><button class="btn btn-secondary">Kembali</button></a>
                 </div>
             </div>

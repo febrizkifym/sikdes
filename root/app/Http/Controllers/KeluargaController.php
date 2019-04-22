@@ -20,6 +20,7 @@ class KeluargaController extends Controller
                 'no_kk' => $p->no_kk,
                 'kepala_keluarga' => Penduduk::withTrashed()->where('no_kk',$p->no_kk)->where('kedudukan',1)->pluck('nama')->first(),
                 'istri' => Penduduk::withTrashed()->where('no_kk',$p->no_kk)->where('kedudukan',2)->pluck('nama')->first(),
+                'jumlah' => Penduduk::withTrashed()->where('no_kk',$p->no_kk)->count(),
                 'jumlah_1' => Penduduk::withTrashed()->where('no_kk',$p->no_kk)->where('kedudukan',3)->count(),
                 'jumlah_2' => Penduduk::withTrashed()->where('no_kk',$p->no_kk)->where('kedudukan',4)->count(),
                 'alamat' => $p->alamat
@@ -32,6 +33,7 @@ class KeluargaController extends Controller
         $keluarga = Penduduk::withTrashed()->where('no_kk',$nokk);
         $kepala_k = Penduduk::withTrashed()->where('no_kk',$nokk)->where('kedudukan',1)->first();
         $istri = Penduduk::withTrashed()->where('no_kk',$nokk)->where('kedudukan',2)->first();
-        return view('keluarga.detail',['keluarga'=>$keluarga, 'kepala_k'=>$kepala_k, 'istri'=>$istri]);
+        $list_keluarga = Penduduk::withTrashed()->where('no_kk',$nokk)->get();
+        return view('keluarga.detail',['keluarga'=>$keluarga, 'kepala_k'=>$kepala_k, 'istri'=>$istri, 'list_keluarga'=>$list_keluarga]);
     }
 }

@@ -4,15 +4,15 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Grafik Pekerjaan Penduduk</h4>
-                <canvas id="pekerjaanChart"></canvas><hr>
+                <h4 class="header-title">Grafik Agama Penduduk</h4>
+                <canvas id="agamaChart"></canvas><hr>
                 <div class="table-responsive">
                    <?php $id=1; ?>
                     <table class="table">
                         <thead class="bg-dark">
                            <tr class="text-white">
                                 <th>#</th>
-                                <th>Pekerjaan</th>
+                                <th>Agama</th>
                                 <th>Jumlah</th>
                                 <th>Persentase</th>
                            </tr>
@@ -20,8 +20,8 @@
                         <tbody>
                             @foreach($data as $d)
                             <tr>
-                                <td>{{$id++}}</td>
-                                <td>{{$d['pekerjaan']}}</td>
+                                <td>{{$d['id']}}</td>
+                                <td>{{$d['agama']}}</td>
                                 <td>{{$d['jumlah']}}</td>
                                 <td>{{100/$penduduk*$d['jumlah']}}%</td>
                             </tr>
@@ -38,32 +38,31 @@
 <script>
 ( function ( $ ) {
     "use strict";
-    var list_pekerjaan = {!! $list_p !!};
+    var list_agama = {!! $list_a !!};
     var result = {!! $result !!};
-    var ctx = document.getElementById( "pekerjaanChart" );
-    ctx.height = 150;
+    var ctx = document.getElementById( "agamaChart" );
+    ctx.height = 100;
     var myChart = new Chart( ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
-            labels: list_pekerjaan,
-            datasets: [
-                {
-                    label: "Jumlah",
-                    data: result,
-                    borderColor: "rgba(0, 194, 146, 0.9)",
-                    borderWidth: "0",
-                    backgroundColor: "rgba(0, 194, 146, 0.5)"
-                            }
-                        ]
+            datasets: [ {
+                data: result,
+                backgroundColor: [
+                                    "rgba(37, 0, 194, 0.9)",
+                                    "rgba(194, 119, 0, 0.9)",
+                                    "rgba(134, 0, 194, 0.9)",
+                                    "rgba(0, 127, 194, 0.9)",
+                                    "rgba(0, 194, 194, 0.9)",
+                                    "rgba(0, 194, 112, 0.9)",
+                                    "rgba(0, 194, 15, 0.9)",
+                                    "rgba(157, 194, 0, 0.9)",
+                                ]
+
+                            } ],
+            labels: list_agama
         },
         options: {
-            scales: {
-                yAxes: [ {
-                    ticks: {
-                        beginAtZero: true
-                    }
-                                } ]
-            }
+            responsive: true
         }
     } );
 } )( jQuery );

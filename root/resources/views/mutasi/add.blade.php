@@ -1,5 +1,8 @@
 @extends('layouts.template')
 @section('content')
+<?php
+    $penduduk = App\Penduduk::all();
+?>
 <div class="row">
 <div class="col-lg-12">
     <div class="card">
@@ -12,7 +15,11 @@
                        @csrf
                         <div class="form-group">
                             <label for="nik">Nomor Induk</label>
-                            <input type="text" class="form-control" name="nik" id="nik" value="@isset($p){{$p->nik}}@endisset" required>
+                            <select name="nik" id="penduduk" class="form-control">
+                                @foreach($penduduk as $pe)
+                                <option value="{{$pe->nik}}">{{$pe->nik}} - {{$pe->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         @isset($p)
                         <div class="form-group">
@@ -51,9 +58,10 @@
 @endsection
 @section('js')
 <script type="text/javascript">
-    var nik = $('#nik').val();
-    $('#nik').focusout(function(){
-        //
+    jQuery(document).ready(function() {
+        jQuery('#penduduk').select2({
+            theme: 'bootstrap4',
+        });
     });
 </script>
 @endsection

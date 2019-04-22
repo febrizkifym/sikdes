@@ -11,9 +11,9 @@
                    <tr>
                         <th>#</th>
                         <th>No. Kartu Keluarga</th>
-                        <th>Nama Kepala Keluarga</th>
-                        <th>Nama Istri</th>
-                        <th>Jumlah Anak</th>
+                        <th>Kepala Keluarga</th>
+                        <th>Istri</th>
+                        <th>Anggota Keluarga</th>
                         <th>Alamat</th>
                         <th>Aksi</th>
                     </tr>
@@ -24,9 +24,20 @@
                     <tr>
                         <td>{{$id++}}</td>
                         <td>{{$k['no_kk']}}</td>
-                        <td>{{$k['kepala_keluarga']}}</td>
-                        <td>{{$k['istri']}}</td>
-                        <td>{{$k['jumlah_1']+$k['jumlah_2']}}</td>
+                        <td>
+                            @isset($k['kepala_keluarga'])
+                                {{$k['kepala_keluarga']}}
+                            @else
+                                <em class="text-muted">Tidak/Belum Terdaftar</em>
+                            @endisset
+                        </td>
+                        <td>
+                            @isset($k['istri'])
+                                {{$k['istri']}}
+                            @else
+                                <em class="text-muted">Tidak/Belum Terdaftar</em>
+                            @endisset</td>
+                        <td>{{$k['jumlah']}} Orang</td>
                         <td>{{$k['alamat']}}</td>
                         <td>
                             <a href="{{route('keluarga.detail',$k['no_kk'])}}"><button class="btn btn-xs btn-primary">Detail</button></a>

@@ -69,9 +69,9 @@
             text-align:center;
             font-size:12pt;
             display:block;
-            margin-top:50px;
+            /*margin-top:50px;
             margin-left:0;
-            margin-right:250px;
+            margin-right:250px;*/
         }
         .ttd-kiri, .ttd-kanan{
 /*            border:1px solid #000;*/
@@ -205,7 +205,7 @@
             </div>
         </article>
         <footer>
-            <div class="ttd-kiri">
+            <!-- <div class="ttd-kiri">
                 <span class="jabatan">Camat Suwawa</span>
                 <span class="ttdnama">{{$data['nama_camat']}}</span>
                 <span class="nip">NIP. {{$data['nip_camat']}}</span>
@@ -214,7 +214,34 @@
                 <span class="tanggal">Tingkohubu, {{$data['tgl_surat']}}</span>
                 <span class="jabatan">Kepala Desa</span>
                 <span class="ttdnama">{{$data['nama_kades']}}</span>
-            </div>
+            </div> -->
+            <table border=0 style="width:100%;text-align:center;margin-top:15px;">
+                <tr>
+                  <td></td>
+                  <td width="50px"></td>
+                  <td>Tingkohubu, {{$data['tgl_surat']}}</td>  
+                </tr>
+                <tr>
+                    <td>Camat Suwawa</td>
+                    <td></td>
+                    <td>Kepala Desa</td>
+                </tr>
+                <tr>
+                    <td height="100px"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{$data['nama_camat']}}</td>
+                    <td></td>
+                    <td>{{$data['nama_kades']}}</td>
+                </tr>
+                <tr>
+                    <td>NIP. {{$data['nip_camat']}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </footer>
     </div>
 </div>

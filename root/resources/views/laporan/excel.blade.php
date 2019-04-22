@@ -2,9 +2,9 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Nama</th>
-            <th>NIK</th>
             <th>No KK</th>
+            <th>NIK</th>
+            <th>Nama</th>
             <th>JK</th>
             <th>Tempat Lahir</th>
             <th>Tanggal Lahir</th>
@@ -30,8 +30,8 @@
         @endphp
         <tr>
             <td>{{$id++}}</td>
-            <td>{{$d->nik}}</td>
             <td>{{$d->no_kk}}</td>
+            <td>{{$d->nik}}</td>
             <td>{{$d->nama}}</td>
             <td>
                 @if($d->jk == 1)

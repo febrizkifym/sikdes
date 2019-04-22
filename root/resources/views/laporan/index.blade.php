@@ -93,6 +93,9 @@
                                             <input name="usia_ke" type="number" min=1 placeholder="Ke" class="form-control" value="@isset($_GET['usia_ke']){{$_GET['usia_ke']}}@endisset">
                                         </div>
                                     </div>
+                                    <div class="form-group">  
+                                        <button class="btn btn-info" type="reset">Reset</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>

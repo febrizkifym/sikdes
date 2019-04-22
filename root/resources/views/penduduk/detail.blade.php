@@ -109,7 +109,7 @@
                             </p>
                         </div>
                     </div>
-                    <a href="{{route('mutasi.import',$p->nik)}}"><button class="btn btn-warning">Mutasi Penduduk</button></a> 
+                    <a href="{{route('mutasi.import',$p->nik)}}"><button class="btn btn-info">Mutasi Penduduk</button></a> 
                     <a href="{{route('penduduk.edit',$p->id)}}"><button class="btn btn-primary">Edit Data</button></a> 
                     <a href="{{route('penduduk.delete',$p->id)}}"><button class="btn btn-danger">Hapus Data</button></a> 
                   <a href="{{url('penduduk')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>

@@ -26,7 +26,7 @@
                         <div class="row form-group">
                             <div class="col col-md-4"><label class="form-control-label">No. KK</label></div>
                             <div class="col-12 col-md-8">
-                                <input required type="text" name="nokk" placeholder="Nomor Kartu Keluarga" class="form-control">
+                                <input required type="text" name="nokk" placeholder="Nomor Kartu Keluarga" class="form-control" @isset($_GET['no_kk'])value="{{$_GET['no_kk']}}" readonly @endisset>
                             </div>
                         </div>
                         <div class="row form-group">

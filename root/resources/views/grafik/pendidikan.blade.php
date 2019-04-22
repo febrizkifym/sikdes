@@ -4,15 +4,15 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Grafik Pekerjaan Penduduk</h4>
-                <canvas id="pekerjaanChart"></canvas><hr>
+                <h4 class="header-title">Grafik Pendidikan Penduduk</h4>
+<!--                <canvas id="pendidikanChart"></canvas><hr>-->
                 <div class="table-responsive">
                    <?php $id=1; ?>
                     <table class="table">
                         <thead class="bg-dark">
                            <tr class="text-white">
                                 <th>#</th>
-                                <th>Pekerjaan</th>
+                                <th>Pendidikan</th>
                                 <th>Jumlah</th>
                                 <th>Persentase</th>
                            </tr>
@@ -21,7 +21,7 @@
                             @foreach($data as $d)
                             <tr>
                                 <td>{{$id++}}</td>
-                                <td>{{$d['pekerjaan']}}</td>
+                                <td>{{$d['pendidikan']}}</td>
                                 <td>{{$d['jumlah']}}</td>
                                 <td>{{100/$penduduk*$d['jumlah']}}%</td>
                             </tr>
@@ -38,14 +38,14 @@
 <script>
 ( function ( $ ) {
     "use strict";
-    var list_pekerjaan = {!! $list_p !!};
+    var list_pendidikan = {!! $list_p !!};
     var result = {!! $result !!};
-    var ctx = document.getElementById( "pekerjaanChart" );
+    var ctx = document.getElementById( "pendidikanChart" );
     ctx.height = 150;
     var myChart = new Chart( ctx, {
         type: 'bar',
         data: {
-            labels: list_pekerjaan,
+            labels: list_pendidikan,
             datasets: [
                 {
                     label: "Jumlah",

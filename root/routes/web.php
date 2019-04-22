@@ -81,3 +81,5 @@ Route::post('/surat/kelahiran/cetak','SuratController@cetakKelahiran');
 //routing grafik
 Route::get('grafik/pekerjaan','GrafikController@pekerjaan');
 Route::get('grafik/pendidikan','GrafikController@pendidikan');
+Route::get('grafik/agama','GrafikController@agama');
+Route::get('grafik/usia','GrafikController@usia');
