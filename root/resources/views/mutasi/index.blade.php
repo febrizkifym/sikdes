@@ -34,8 +34,10 @@
                         Datang
                         @elseif($m->status == 2)
                         Pergi
-                        @elseif($m->status = 3)
+                        @elseif($m->status == 3)
                         Meninggal
+                        @elseif($m->status == 4)
+                        Pisah Kartu Keluarga
                         @endif
                     </td>
                     <td>{{date('d F Y',strtotime($m->created_at))}}</td>

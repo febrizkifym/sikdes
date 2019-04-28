@@ -8,6 +8,14 @@ use App\Penduduk;
 
 class MutasiController extends Controller
 {
+    /*
+        kode jenis mutasi
+        1 => penduduk datang
+        2 => penduduk pergi
+        3 => penduduk meninggal
+        4 => pindah nomor kk
+    */
+    
     public function index(){
         $mutasi = Mutasi::all();
         return view('mutasi.index',['mutasi'=>$mutasi]);
@@ -34,6 +42,11 @@ class MutasiController extends Controller
         if($r->jenis_mutasi == 3){
             $p = Penduduk::where('nik',$r->nik)->delete();
         }
+        if($r->jenis_mutasi == 4){
+            $p = Penduduk::where('nik',$r->nik)->first();
+            $p->no_kk = $r->nokk;
+            $p->save();
+        }
         return redirect('mutasi')->with('success','Input Data Berhasil');
     }
     public function detail($id){
@@ -45,6 +58,7 @@ class MutasiController extends Controller
         return view('mutasi.edit',['m'=>$m]);
     }
     public function update(Request $r, $id){
+        $old_value = Penduduk::where('nik',$r->nik)->get();
         $m = Mutasi::find($id);
         $penduduk = Penduduk::where('nik',$r->nik)->first();
         $m->id_penduduk = $penduduk->id;
@@ -58,6 +72,11 @@ class MutasiController extends Controller
             if($penduduk->trashed()){
                 $penduduk->restore();
             }
+        }
+        if($r->jenis_mutasi == 4){
+            $p = Penduduk::where('nik',$r->nik)->first();
+            $p->no_kk = $r->nokk;
+            $p->save();
         }
         return redirect('mutasi')->with('success','Update Data Berhasil');
     }

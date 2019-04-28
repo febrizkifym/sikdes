@@ -23,7 +23,7 @@
                                 <td>{{$d['id']}}</td>
                                 <td>{{$d['agama']}}</td>
                                 <td>{{$d['jumlah']}}</td>
-                                <td>{{100/$penduduk*$d['jumlah']}}%</td>
+                                <td>{{round(100/$penduduk*$d['jumlah'],2)}}%</td>
                             </tr>
                             @endforeach
                         </tbody>

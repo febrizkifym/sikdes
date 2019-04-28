@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-           <h4 class="title-header">Edit Mutasi Penduduk</h4>
+           <h4 class="title-header">Detail Mutasi Penduduk</h4>
            <hr>
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Nama Lengkap</label></div>
@@ -34,12 +34,14 @@
                         <div class="col col-md-3"><label class=" form-control-label">Jenis Mutasi</label></div>
                         <div class="col-12 col-md-9">
                             <p class="form-control-static">
-                                 @if($m->jenis_mutasi == 1)
-                                Datang
-                                @elseif($m->jenis_mutasi == 2)
-                                Pergi
-                                @elseif($m->jenis_mutasi = 3)
-                                Meninggal
+                                @if($m->status == 1)
+                                    Datang
+                                @elseif($m->status == 2)
+                                    Pergi
+                                @elseif($m->status == 3)
+                                    Meninggal
+                                @elseif($m->status == 4)
+                                    Pisah Kartu Keluarga
                                 @endif
                             </p>
                         </div>
@@ -53,7 +55,13 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Keterangan</label></div>
                         <div class="col-12 col-md-9">
-                            <p class="form-control-static">{{$m->keterangan}}</p>
+                            <p class="form-control-static">
+                                @isset($m->keterangan)
+                                    {{$m->keterangan}}
+                                @else
+                                    Tidak ada keterangan
+                                @endisset
+                            </p>
                         </div>
                     </div>
                     <a href="{{route('penduduk.detail',$m->penduduk->id)}}"><button class="btn btn-success">Detail Penduduk</button></a>

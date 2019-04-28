@@ -27,7 +27,7 @@
                                 <td>{{$d['usia_l']}} Orang</td>
                                 <td>{{$d['usia_p']}} Orang</td>
                                 <td>{{$d['usia_l']+$d['usia_p']}} Orang</td>
-                                <td>{{100/$penduduk*($d['usia_l']+$d['usia_p'])}}%</td>
+                                <td>{{round(100/$penduduk*($d['usia_l']+$d['usia_p']),2)}}%</td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -85,7 +85,7 @@
 <body>
 <div class="container">
     <div class="brand">
-        <h1>Sistem Informasi Kependudukan Desa Tingkohubu</h1>
+        <h1>Sistem Informasi Kependudukan<br>Desa Tingkohubu</h1>
     </div>
     <img src="{{asset('images/logo2.png')}}" alt="" class="brand">
     <div class="loginbox">

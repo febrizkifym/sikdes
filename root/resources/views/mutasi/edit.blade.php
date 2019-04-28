@@ -12,7 +12,7 @@
                        @csrf
                         <div class="form-group">
                             <label for="nik">Nomor Induk</label>
-                            <input type="text" class="form-control" name="nik" value="{{$m->penduduk->nik}}">
+                            <input type="text" class="form-control" name="nik" value="{{$m->penduduk->nik}}" readonly>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">Nama</label>
@@ -21,10 +21,15 @@
                         <div class="form-group">
                             <label for="jenis_mutasi">Jenis Mutasi</label>
                             <select name="jenis_mutasi" id="jenisMutasi" class="form-control">
-                                <option value="1" {{$m->jenis_mutasi==1?'selected':''}}>Penduduk Datang</option>
-                                <option value="2" {{$m->jenis_mutasi==2?'selected':''}}>Penduduk Pergi</option>
-                                <option value="3" {{$m->jenis_mutasi==3?'selected':''}}>Penduduk Meninggal</option>
+                                <option value="1" {{$m->status==1?'selected':''}}>Penduduk Datang</option>
+                                <option value="2" {{$m->status==2?'selected':''}}>Penduduk Pergi</option>
+                                <option value="3" {{$m->status==3?'selected':''}}>Penduduk Meninggal</option>
+                                <option value="4" {{$m->status==4?'selected':''}}>Pisah Kartu Keluarga</option>
                             </select>
+                        </div>
+                        <div class="form-group" id="nokk_form" style="display:none">
+                            <label for="nokk">Nomor KK Baru</label>
+                            <input type="text" class="form-control" name="nokk" value="{{$m->penduduk->no_kk}}">
                         </div>
                         <div class="form-group">
                             <label for="tanggal">Tanggal</label>
@@ -46,4 +51,22 @@
 </div>
 </div>
 <div class="clearfix"></div>
+@endsection
+@section('js')
+<script>
+    $(document).ready(function(){
+        if($('#jenisMutasi').val() == 4){
+            $('#nokk_form').show();
+        }
+       $('#jenisMutasi').change(function(){
+           var jenisMutasi = $('#jenisMutasi').val();
+           var noKK = $('#nokk_form');
+           if(jenisMutasi == 4){
+                noKK.show();
+              }else{
+                  noKK.hide();
+              }
+       }); 
+    });
+</script>
 @endsection

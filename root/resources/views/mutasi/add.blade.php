@@ -33,7 +33,12 @@
                                 <option value="1">Penduduk Datang</option>
                                 <option value="2">Penduduk Pergi</option>
                                 <option value="3">Penduduk Meninggal</option>
+                                <option value="4">Pisah Kartu Keluarga</option>
                             </select>
+                        </div>
+                        <div class="form-group" id="nokk_form" style="display:none">
+                            <label for="nokk">Nomor KK Baru</label>
+                            <input type="text" class="form-control" name="nokk">
                         </div>
                         <div class="form-group">
                             <label for="tanggal">Tanggal</label>
@@ -59,8 +64,18 @@
 @section('js')
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        var nik = jQuery('#penduduk').val();
         jQuery('#penduduk').select2({
             theme: 'bootstrap4',
+        });
+        jQuery('#jenisMutasi').change(function(){
+        var jenisMutasi = jQuery('#jenisMutasi').val();
+                console.log(jenisMutasi);
+            if(jenisMutasi == 4){
+                jQuery('#nokk_form').show();
+           }else{
+               jQuery('#nokk_form').hide();
+               }
         });
     });
 </script>
