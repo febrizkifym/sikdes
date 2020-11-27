@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admin SIKDES Tingkohubu</title>
+    <title>Sistem Informasi Administrasi Data Penduduk Desa Bukit Aren</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/icon/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -45,7 +45,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="{{url('/')}}"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+                    <!-- <a href="{{url('/')}}"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a> -->
                 </div>
             </div>
             <div class="main-menu">
@@ -54,24 +54,24 @@
                         <ul class="metismenu" id="menu">
                             <li class="{{Request::is('/') ? 'active ' : ''}}"><a href="{{url('/')}}"><i class="ti-dashboard"></i> <span>Dashboard</span></a></li>
                            @if(Auth::user()->tipe == 1)
-                            <li class="{{Request::is('penduduk*') ? 'active ' : ''}}"><a href="{{url('/penduduk')}}"><i class="ti-id-badge"></i> <span>Penduduk</span></a></li>
-                            <li class="{{Request::is('keluarga*') ? 'active ' : ''}}"><a href="{{url('/keluarga')}}"><i class="ti-home"></i> <span>Keluarga</span></a></li>
+                            <li class="{{Request::is('penduduk*') ? 'active ' : ''}}"><a href="{{url('/penduduk')}}"><i class="ti-id-badge"></i> <span>Data Induk</span></a></li>
+                            <li class="{{Request::is('keluarga*') ? 'active ' : ''}}"><a href="{{url('/keluarga')}}"><i class="ti-home"></i> <span>Kartu Keluarga</span></a></li>
                             <li class="{{Request::is('mutasi*') ? 'active ' : ''}}"><a href="{{url('/mutasi')}}"><i class="ti-book"></i> <span>Mutasi</span></a></li>
-                            <li class="{{Request::is('grafik*') ? 'active ' : ''}}">
+                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Cetak Laporan</span></a></li>
+                            <!-- <li class="{{Request::is('surat*') ? 'active ' : ''}}">
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-email"></i> <span>Cetak Surat</span></a>
+                                <ul class="collapse">
+                                    <li class="{{Request::is('surat/kematian') ? 'active ' : ''}}"><a href="{{url('surat/kematian')}}">Surat Kematian</a></li>
+                                    <li class="{{Request::is('surat/kelahiran') ? 'active ' : ''}}"><a href="{{url('surat/kelahiran')}}">Surat Kelahiran</a></li>
+                                </ul>
+                            </li> -->
+                                                        <li class="{{Request::is('grafik*') ? 'active ' : ''}}">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-bar-chart"></i> <span>Grafik Penduduk</span></a>
                                 <ul class="collapse">
                                     <li class="{{Request::is('grafik/usia') ? 'active ' : ''}}"><a href="{{url('grafik/usia')}}">Usia</a></li>
                                     <li class="{{Request::is('grafik/agama') ? 'active ' : ''}}"><a href="{{url('grafik/agama')}}">Agama</a></li>
                                     <li class="{{Request::is('grafik/pekerjaan') ? 'active ' : ''}}"><a href="{{url('grafik/pekerjaan')}}">Pekerjaan</a></li>
                                     <li class="{{Request::is('grafik/pendidikan') ? 'active ' : ''}}"><a href="{{url('grafik/pendidikan')}}">Pendidikan</a></li>
-                                </ul>
-                            </li>
-                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Cetak Laporan</span></a></li>
-                            <li class="{{Request::is('surat*') ? 'active ' : ''}}">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-email"></i> <span>Cetak Surat</span></a>
-                                <ul class="collapse">
-                                    <li class="{{Request::is('surat/kematian') ? 'active ' : ''}}"><a href="{{url('surat/kematian')}}">Surat Kematian</a></li>
-                                    <li class="{{Request::is('surat/kelahiran') ? 'active ' : ''}}"><a href="{{url('surat/kelahiran')}}">Surat Kelahiran</a></li>
                                 </ul>
                             </li>
                             @else

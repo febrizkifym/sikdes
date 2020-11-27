@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Penduduk;
+use App\Mutasi;
 use PDF;
 use App\Exports\PendudukExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -64,6 +65,58 @@ class LaporanController extends Controller
             return $pdf->stream();
         }else{
             return Excel::download(new PendudukExport($data), $namaFile.'.xlsx');       
+        }
+    }
+    public function mutasi(Request $r){
+        switch($r->bulan){
+            case 01:
+                $bulan = "Januari";
+            break;
+            case 02:
+                $bulan = "Februari";
+            break;
+            case 03:
+                $bulan = "Maret";
+            break;
+            case 04:
+                $bulan = "April";
+            break;
+            case 05:
+                $bulan = "Mei";
+            break;
+            case 06:
+                $bulan = "Juni";
+            break;
+            case 07:
+                $bulan = "Juli";
+            break;
+            case "08":
+                $bulan = "Agustus";
+            break;
+            case "09":
+                $bulan = "September";
+            break;
+            case 10:
+                $bulan = "Oktober";
+            break;
+            case 11:
+                $bulan = "November";
+            break;
+            case 12:
+                $bulan = "Desember";
+            break;
+        }
+        $tahun = $r->tahun;
+        $tanggal = $r->tahun."-".$r->bulan."-01 00:00:00";
+        $tanggal2 = $r->tahun."-".$r->bulan."-31 00:00:00";
+        $data = Mutasi::join('t_penduduk','t_mutasi.id_penduduk','=','t_penduduk.id')->whereBetween("t_mutasi.created_at",[$tanggal,$tanggal2]);
+        if($data->count() > 0){
+            // dd($data->get());
+            $namaFile = 'laporanPenduduk_'.date('dmY');
+            $pdf = PDF::loadView('laporan.mutasi',['data'=>$data->get(),'bulan'=>$bulan,'tahun'=>$tahun])->setPaper('a4', 'landscape');
+            return $pdf->stream();
+        }else{
+            
         }
     }
 }

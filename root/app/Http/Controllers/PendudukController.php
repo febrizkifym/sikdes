@@ -116,7 +116,7 @@ class PendudukController extends Controller
     }
     public function delete($id){
         $p = Penduduk::find($id);
-        $p->delete();
+        $p->forceDelete();
         return redirect('/penduduk')->with('success','Hapus Data Berhasil');
     }
 }

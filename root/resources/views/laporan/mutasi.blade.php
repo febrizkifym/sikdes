@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>laporan</title>
+    <title>Laporan Mutasi Bulan {{$bulan}} Tahun {{$tahun}}</title>
     <style>
         *{
             font-size:9pt;
@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- <header>
         <div class="row">
             <div class="col-2">
                 <img src="{{asset('images/logo2.png')}}" alt="logo" class="logo">
@@ -68,76 +68,85 @@
                 </span>
             </div>
         </div>
-    </header>
-    <h1>Laporan Kependudukan Desa Bukit Aren</h1>
+    </header> -->
+    <h1>B.2 BUKU MUTASI PENDUDUK DESA</h1>
+    <br>
+    <br>
+    <h1>BUKU MUTASI PENDUDUK DESA BULAN {{$bulan}} TAHUN {{$tahun}}</h1>
     <table class="table table-sm">
         <tr>
-            <th>#</th>
-            <th>NIK</th>
-            <th>No KK</th>
-            <th>Nama</th>
-            <th>JK</th>
-            <th>Tempat Lahir</th>
-            <th>Tanggal Lahir</th>
-            <th>Status</th>
-            <th>Kedudukan</th>
-            <th>Agama</th>
-            <th>Pekerjaan</th>
-            <th>Pendidikan</th>
+            <th>NO</th>
+            <th>NAMA LENGKAP</th>
+            <th>TEMPAT & TANGGAL LAHIR</th>
+            <th>JENIS KELAMIN</th>
+            <th>JENIS MUTASI</th>
+            <th>TANGGAL</th>
+            <th>KETERANGAN</th>
         </tr>
+        <!-- <tr>
+            <th rowspan="2">NOMOR URUT</th>
+            <th rowspan="2">NAMA LENGKAP / PANGGILAN</th>
+            <th colspan="2">TEMPAT & TANGGAL LAHIR</th>
+            <th rowspan="2">JENIS KELAMIN</th>
+            <th rowspan="2">KEWARGANEGARAAN</th>
+            <th colspan="2">PENAMBAHAN</th>
+            <th colspan="4">PENGURANGAN</th>
+            <th rowspan="2">KET</th>
+        </tr>
+        <tr>
+            <th>TEMPAT</th>
+            <th>TANGGAL</th>
+            <th>DATANG DARI</th>
+            <th>TANGGAL</th>
+            <th>PINDAH KE</th>
+            <th>TANGGAL</th>
+            <th>MENINGGAL</th>
+            <th>TANGGAL</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+        </tr> -->
         <?php 
         use Carbon\Carbon;
         use Illuminate\Support\Facades\DB;
         $id=1; ?>
         @foreach($data as $d)
-        @php
-            $agama = DB::table('m_agama')->find($d->id_agama);
-            $pendidikan = DB::table('m_pendidikan')->find($d->id_pend);
-            $pekerjaan = DB::table('m_pekerjaan')->find($d->id_pekerjaan);
-            $cacat = DB::table('m_cacat')->find($d->id_cacat);
-        @endphp
         <tr>
             <td>{{$id++}}</td>
-            <td>{{$d->nik}}</td>
-            <td>{{$d->no_kk}}</td>
             <td>{{$d->nama}}</td>
+            <td>{{$d->tempat_lahir}} - {{$d->tgl_lahir}}</td>
             <td>
                 @if($d->jk == 1)
-                L
+                    Laki-Laki
                 @else
-                P
+                    Perempuan
                 @endif
             </td>
-            <td>{{$d->tempat_lahir}}</td>
-            <td>{{Carbon::parse($d->tgl_lahir)->format('d M Y')}}</td>
-            <td>{{$d->status==1?'Kawin':'Belum Kawin'}}</td>
             <td>
-                @if($d->kedudukan==1)
-                Kepala Keluarga
-                @elseif($d->kedudukan==2)
-                Istri
-                @elseif($d->kedudukan==3)
-                Anak Kandung
-                @elseif($d->kedudukan==4)
-                Anak Angkat
+                @if($d->status)
+                @else
                 @endif
             </td>
-            <td>{{$agama->agama}}</td>
-            <td>{{$pekerjaan->pekerjaan}}</td>
-            <td>{{$pendidikan->tingkat}}</td>
+            <td>
+                {{Carbon::parse($d->created_at)->format('d M Y')}}
+            </td>
+            <td>
+                {{$d->keterangan}}
+            </td>
         </tr>
         @endforeach
-    </table>
-    <table class="table" style="width:6cm;margin-top:10px">
-        <tr>
-            <th>Jumlah Laki- Laki</th><th>{{$data->where("jk","=",1)->count()}}</th>
-        </tr>
-        <tr>
-            <th>Jumlah Perempuan</th><th>{{$data->where("jk","=",2)->count()}}</th>
-        </tr>
-        <tr>
-            <th>Total</th><th>{{$data->count()}}</th>
-        </tr>
     </table>
     <h2>Tanggal : {{date('d F Y')}}</h2>
     <strong>Dicetak oleh : {{Auth::user()->username}}</strong>

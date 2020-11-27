@@ -42,12 +42,14 @@
                     </td>
                     <td>{{date('d F Y',strtotime($m->created_at))}}</td>
                     <td>
-                        <a href="{{route('mutasi.detail',$m->id)}}"><button class="btn btn-sm btn-primary">Detail</button></a>
+                        <a href="{{route('mutasi.cetak',$m->id)}}"><button class="btn btn-sm btn-info">Cetak Surat</button></a>
                         <a href="{{route('mutasi.delete',$m->id)}}"><button class="btn btn-sm btn-danger">Hapus</button></a>
                     </td>
                 </tr>
                 @endforeach
             </table>
+            <hr>
+            <a href="{{route('mutasi.laporan')}}"><button class="btn btn-info">Cetak Laporan Mutasi</button></a>
         </div>
     </div>
 </div>

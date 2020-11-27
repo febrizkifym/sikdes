@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mutasi;
 use App\Penduduk;
+use PDF;
 
 class MutasiController extends Controller
 {
@@ -88,5 +89,12 @@ class MutasiController extends Controller
         }
         $mutasi->delete();
         return redirect('mutasi')->with('success','Hapus Data Berhasil');
+    }
+    //
+    public function cetak($id){
+        echo $id;
+    }
+    public function laporan(){
+        return view('mutasi.laporan');
     }
 }

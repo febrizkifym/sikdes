@@ -44,6 +44,10 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/mutasi','MutasiController@index');
     Route::prefix('mutasi')->group(function(){
         Route::name('mutasi.')->group(function(){
+            Route::get('cetak/{id}','MutasiController@cetak')->name('cetak');
+            Route::get('laporan/','MutasiController@laporan')->name('laporan');
+            Route::post('laporan/cetak','LaporanController@mutasi')->name('cetak_laporan');
+            //
             Route::get('detail/{id}','MutasiController@detail')->name('detail');
             Route::get('tambah','MutasiController@add')->name('add');
             Route::get('tambah/{nik}','MutasiController@import')->name('import');

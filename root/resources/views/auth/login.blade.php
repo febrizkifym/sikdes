@@ -85,9 +85,10 @@
 <body>
 <div class="container">
     <div class="brand">
-        <h1>Sistem Informasi Kependudukan<br>Desa Tingkohubu</h1>
+        <br><br><br>
+        <h1>Sistem Informasi Administrasi Data Penduduk<br>Desa Bukit Aren <br><br></h1>
     </div>
-    <img src="{{asset('images/logo2.png')}}" alt="" class="brand">
+    <!-- <img src="{{asset('images/logo2.png')}}" alt="" class="brand"> -->
     <div class="loginbox">
         <span>{{ __('Login') }}</span>
         <form action="{{ route('login') }}" method="POST">
@@ -106,7 +107,7 @@
             @endif
             <button class="submit" type="submit">Login</button>
         </form>
-        <span class="copyright">Copyright. 2019</span>
+        <span class="copyright">Copyright. 2020</span>
     </div>
 </div>
 </body>
