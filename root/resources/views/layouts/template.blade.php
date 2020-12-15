@@ -74,8 +74,11 @@
                                     <li class="{{Request::is('grafik/pendidikan') ? 'active ' : ''}}"><a href="{{url('grafik/pendidikan')}}">Pendidikan</a></li>
                                 </ul>
                             </li>
-                            @else
+                            @elseif(Auth::user()->tipe == 2)
                             <li class="{{Request::is('user*') ? 'active ' : ''}}"><a href="{{url('/user')}}"><i class="ti-user"></i> <span>User</span></a></li>
+                            <li class="{{Request::is('kades*') ? 'active ' : ''}}"><a href="{{url('/kades')}}"><i class="ti-key"></i> <span>Kepala Desa</span></a></li>
+                            @else
+                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Cetak Laporan</span></a></li>
                             @endif
                         </ul>
                     </nav>

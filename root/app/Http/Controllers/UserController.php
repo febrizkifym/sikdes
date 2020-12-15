@@ -74,4 +74,37 @@ class UserController extends Controller
         $u->save();
         return redirect('user')->with('success','Update Data Berhasil');
     }
+    //kades
+    public function kades_index(){
+        $u = User::where('tipe',3)->first();
+        return view("user.kades_index",['u'=>$u]);
+    }
+    public function kades_update(Request $r){
+        $u = User::where('tipe',3)->first();
+        $validasi = $r->validate([
+            'username' => 'required|min:8|max:16',
+            'email' => 'required|email',
+            'password' => 'min:8',
+        ],[
+            'username.min' => 'Username harus lebih dari :min karakter!',
+            'username.max' => 'Username harus kurang dari :max karakter!',
+            'password.min' => 'Password harus lebih dari :min karakter!',
+        ]);
+        $u->nama_lengkap = $r->nama_lengkap;
+        $u->nip = $r->nip;
+        $u->username = $r->username;
+        $u->email = $r->email;
+        if($r->password == $r->password2){
+            $password_valid = true;
+        }else{
+            $password_valid = false;
+        }
+        if($password_valid == true){
+            $u->password = bcrypt($r->password);
+        }else{
+            return redirect()->back()->withInput()->with('alert','Password tidak cocok!');
+        }
+        $u->save();
+        return redirect('kades')->with('success','Update Data Berhasil');
+    }
 }

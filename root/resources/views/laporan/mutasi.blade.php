@@ -135,8 +135,14 @@
                 @endif
             </td>
             <td>
-                @if($d->status)
-                @else
+                @if($d->status == 1)
+                    Datang
+                @elseif($d->status == 2)
+                    Pergi
+                @elseif($d->status == 3)
+                    Meninggal
+                @elseif($d->status == 4)
+                    Pisah Kartu Keluarga
                 @endif
             </td>
             <td>

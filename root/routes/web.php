@@ -68,6 +68,12 @@ Route::group(['middleware'=>['auth']],function(){
                 Route::get('delete/{id}','UserController@delete')->name('delete');
             });
         }); 
+    Route::get('/kades','UserController@kades_index');
+        Route::prefix('kades')->group(function(){
+            Route::name('kades.')->group(function(){
+                Route::post('update','UserController@kades_update')->name('update');
+            });
+        });
 });
 
 //routing laporan

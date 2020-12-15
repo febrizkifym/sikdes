@@ -116,7 +116,7 @@ class LaporanController extends Controller
             $pdf = PDF::loadView('laporan.mutasi',['data'=>$data->get(),'bulan'=>$bulan,'tahun'=>$tahun])->setPaper('a4', 'landscape');
             return $pdf->stream();
         }else{
-            
+            return redirect(route('mutasi.laporan'))->with('warning','Tidak ada data di bulan yang dipilih');
         }
     }
 }

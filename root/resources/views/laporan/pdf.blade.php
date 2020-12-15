@@ -77,10 +77,10 @@
             <th>No KK</th>
             <th>Nama</th>
             <th>JK</th>
+            <th>Alamat</th>
             <th>Tempat Lahir</th>
             <th>Tanggal Lahir</th>
             <th>Status</th>
-            <th>Kedudukan</th>
             <th>Agama</th>
             <th>Pekerjaan</th>
             <th>Pendidikan</th>
@@ -108,10 +108,13 @@
                 P
                 @endif
             </td>
+            <td>
+                {{$d->alamat}}
+            </td>
             <td>{{$d->tempat_lahir}}</td>
             <td>{{Carbon::parse($d->tgl_lahir)->format('d M Y')}}</td>
             <td>{{$d->status==1?'Kawin':'Belum Kawin'}}</td>
-            <td>
+            <!-- <td>
                 @if($d->kedudukan==1)
                 Kepala Keluarga
                 @elseif($d->kedudukan==2)
@@ -121,7 +124,7 @@
                 @elseif($d->kedudukan==4)
                 Anak Angkat
                 @endif
-            </td>
+            </td> -->
             <td>{{$agama->agama}}</td>
             <td>{{$pekerjaan->pekerjaan}}</td>
             <td>{{$pendidikan->tingkat}}</td>

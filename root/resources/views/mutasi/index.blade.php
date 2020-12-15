@@ -49,7 +49,8 @@
                 @endforeach
             </table>
             <hr>
-            <a href="{{route('mutasi.laporan')}}"><button class="btn btn-info">Cetak Laporan Mutasi</button></a>
+            <a href="{{route('mutasi.laporan')}}"><button class="btn btn-primary">Cetak Laporan Mutasi</button></a>
+            <a href=""><button class="btn btn-info">Cetak Rekap Mutasi Perbulan</button></a>
         </div>
     </div>
 </div>
