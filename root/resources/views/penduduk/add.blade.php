@@ -15,7 +15,6 @@
                             $agama = DB::table('m_agama')->get();
                             $pendidikan = DB::table('m_pendidikan')->get();
                             $pekerjaan = DB::table('m_pekerjaan')->get();
-                            $cacat = DB::table('m_cacat')->get();
                         @endphp
                         <div class="row form-group">
                             <div class="col col-md-4"><label class="form-control-label">Nama</label></div>
@@ -112,19 +111,6 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col col-md-4"><label class="form-control-label">Dapat Membaca Huruf</label></div>
-                            <div class="col-12 col-md-8">
-                                <div class="form-check-inline form-check">
-                                    <label for="inline-radio1" class="form-check-label ">
-                                        <input required type="radio" name="butahuruf" value="0" class="form-check-input">Ya&nbsp;&nbsp;
-                                    </label>
-                                    <label for="inline-radio2" class="form-check-label ">
-                                        <input required type="radio" name="butahuruf" value="1" class="form-check-input">Tidak
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
                             <div class="col col-md-4"><label class="form-control-label">Kedudukan dalam Keluarga</label></div>
                             <div class="col-12 col-md-8">
                                 <select name="kedudukan" class="form-control">
@@ -144,18 +130,6 @@
                                     <option value="1">Warga Negara Indonesia</option>
                                     <option value="2">Warga Negara Asing</option>
                                     <option value="3">Dwi Warga Negara</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-4"><label class="form-control-label">Cacat</label></div>
-                            <div class="col-12 col-md-8">
-                                <select name="cacat" class="form-control">
-                                    <option value="">-- Pilihan</option>
-                                    <option value="0" selected>Tidak ada</option>
-                                    @foreach($cacat as $ca)
-                                    <option value="{{$ca->id}}">{{$ca->cacat}}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>

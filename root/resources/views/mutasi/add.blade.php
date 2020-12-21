@@ -34,6 +34,7 @@
                                 <option value="2">Penduduk Pergi</option>
                                 <option value="3">Penduduk Meninggal</option>
                                 <option value="4">Pisah Kartu Keluarga</option>
+                                <option value="5">Lahir</option>
                             </select>
                         </div>
                         <div class="form-group" id="nokk_form" style="display:none">

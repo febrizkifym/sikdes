@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2020 at 08:06 AM
+-- Generation Time: Dec 15, 2020 at 05:01 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -212,15 +212,6 @@ CREATE TABLE `t_mutasi` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `t_mutasi`
---
-
-INSERT INTO `t_mutasi` (`id`, `id_penduduk`, `status`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 1, 3, NULL, '2019-05-01 16:00:00', '2019-05-02 02:58:10'),
-(2, 2, 1, NULL, '2020-11-26 16:00:00', '2020-11-27 02:18:13'),
-(3, 5, 3, NULL, '2020-11-02 16:00:00', '2020-11-27 06:39:44');
-
 -- --------------------------------------------------------
 
 --
@@ -252,11 +243,11 @@ CREATE TABLE `t_penduduk` (
 --
 
 INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `warganegara`, `kedudukan`, `tempat_lahir`, `alamat`, `tgl_lahir`, `butahuruf`, `id_agama`, `id_pend`, `id_pekerjaan`, `id_cacat`, `deleted_at`) VALUES
-(1, '7102091201710001', '7571022004100010', 'Royanto Masaudi', 1, 1, 1, 1, 'Gorontalo', 'Jl. Jamaludin Malik', '1971-01-12', 0, 1, 11, 1, 0, '2019-05-02 02:58:10'),
+(1, '7102091201710001', '7571022004100010', 'Royanto Masaudi', 1, 1, 1, 1, 'Gorontalo', 'Jl. Jamaludin Malik', '1971-01-12', 0, 1, 11, 1, 0, NULL),
 (2, '7102095512670002', '7571022004100010', 'Ramla Tilamuhu', 2, 1, 1, 2, 'Gorontalo', 'Jl. Jamaludin Malik', '1987-12-15', 0, 1, 11, 1, 0, NULL),
 (3, '7102094308990004', '7571022004100010', 'Raodah Masaudi', 2, 2, 1, 3, 'Gorontalo', 'Jl. Jamaludin Malik', '1999-08-03', 0, 1, 12, 32, 0, NULL),
 (4, '7102091806020004', '7571022004100010', 'Baharudin Masaudi', 1, 2, 1, 3, 'Gorontalo', 'Jl. Jamaludin Malik', '2002-08-12', 0, 1, 8, 32, 0, NULL),
-(5, '7571020109720001', '7571021402080002', 'Romy M Dengo', 1, 1, 1, 1, 'Gorontalo', 'Jl. P.Diponegoro', '1972-09-01', 0, 1, 12, 28, 0, '2020-11-27 06:39:44'),
+(5, '7571020109720001', '7571021402080002', 'Romy M Dengo', 1, 1, 1, 1, 'Gorontalo', 'Jl. P.Diponegoro', '1972-09-01', 0, 1, 12, 28, 0, NULL),
 (6, '7571024406770001', '7571021402080002', 'Wisna A Mauna', 2, 1, 1, 2, 'Gorontalo', 'Jl. P.Diponegoro', '1977-06-04', 0, 1, 11, 2, 0, NULL),
 (7, '7571022601990001', '7571021402080002', 'Moh Fadel Dengo', 1, 2, 1, 3, 'Gorontalo', 'Jl. P.Diponegoro', '1999-01-26', 0, 1, 12, 32, 0, NULL),
 (8, '7571022106060001', '7571021402080002', 'Moh Fahmi Dengo', 1, 2, 1, 3, 'Gorontalo', 'Jl. P.Diponegoro', '2006-06-21', 0, 1, 8, 32, 0, NULL),
@@ -277,6 +268,8 @@ INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `wargane
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
+  `nama_lengkap` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nip` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tipe` tinyint(4) NOT NULL DEFAULT 1,
@@ -291,9 +284,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `tipe`, `password`, `last_login`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'adminsikdes@gmail.com', 2, '$2y$10$7Rz9.CgaZdVVKEwi4Ntv6.RzBPWRRLhob6SBShvuWlrL1vxbt1h/W', '2020-11-26 06:39:35', 'OBrOPVYctRrRTKoo78GKP7apv6ZDAaFUNGnweS8l1igxuhudbD4NdDJD5HCD', NULL, '2020-11-26 06:39:35'),
-(4, 'febrizki', 'mawikere@gmail.com', 1, '$2y$10$cyl3bXLxMcFBRCv3CeVYF.fKR8RXHXWCtoBsOEjwa/9PuiI4rMD02', '2020-11-27 01:28:34', 'ef8OGVu5fWZPaKji1hJECJe3W9fp3WKW7vJF4vbREHmYZtRXqNWNBGvxz3iI', '2020-11-26 06:40:14', '2020-11-27 01:28:34');
+INSERT INTO `users` (`id`, `nama_lengkap`, `nip`, `username`, `email`, `tipe`, `password`, `last_login`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, 'admin', 'adminsikdes@gmail.com', 2, '$2y$10$7Rz9.CgaZdVVKEwi4Ntv6.RzBPWRRLhob6SBShvuWlrL1vxbt1h/W', '2020-12-15 03:44:39', 'ebegp4nIimz6K4Ujc7BaH3zTNiegmOZO4zLk6ZWiUkKW9NBFwRL9eo6mo0mX', NULL, '2020-12-15 03:44:39'),
+(4, NULL, NULL, 'febrizki', 'mawikere@gmail.com', 1, '$2y$10$cyl3bXLxMcFBRCv3CeVYF.fKR8RXHXWCtoBsOEjwa/9PuiI4rMD02', '2020-12-15 03:59:46', 'S7kUCKQk33UkRxwXwxBB77S41lrz5OHHTCb1hkUl7JY3vmTCl90x9WmfK3Ru', '2020-11-26 06:40:14', '2020-12-15 03:59:46'),
+(6, 'Febrizki Mawikere', '7501132802000002', 'kepaladesa', 'kades@gmail.com', 3, '$2y$10$lF8kdJ6h8w/3BVMiW9Sdu.CjediBjIgJiftBvONxh2JTqFGN5jr0G', '2020-12-15 03:48:32', 'kWReqSyXNGaQz2qmnS87CeNa59TvRpySiupzk8u6Zq5ccTOZYhvjtpAqiA4Q', '2020-11-26 06:40:14', '2020-12-15 03:48:32');
 
 --
 -- Indexes for dumped tables
@@ -397,7 +391,7 @@ ALTER TABLE `m_pendidikan`
 -- AUTO_INCREMENT for table `t_mutasi`
 --
 ALTER TABLE `t_mutasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `t_penduduk`
@@ -409,7 +403,7 @@ ALTER TABLE `t_penduduk`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

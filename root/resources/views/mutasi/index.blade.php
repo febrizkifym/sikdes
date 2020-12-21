@@ -50,7 +50,7 @@
             </table>
             <hr>
             <a href="{{route('mutasi.laporan')}}"><button class="btn btn-primary">Cetak Laporan Mutasi</button></a>
-            <a href=""><button class="btn btn-info">Cetak Rekap Mutasi Perbulan</button></a>
+            <a href="{{route('mutasi.rekap')}}"><button class="btn btn-info">Rekap Jumlah Penduduk Perbulan</button></a>
         </div>
     </div>
 </div>

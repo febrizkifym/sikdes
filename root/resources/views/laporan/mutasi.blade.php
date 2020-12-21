@@ -7,6 +7,9 @@
         *{
             font-size:9pt;
         }
+        .noborder{
+            border:0px;
+        }
         table{width:100%;}
         table, tr, td, th{
             border:1px solid #333;
@@ -121,7 +124,9 @@
         <?php 
         use Carbon\Carbon;
         use Illuminate\Support\Facades\DB;
-        $id=1; ?>
+        $id=1; 
+        $kades = DB::table('users')->where('tipe','3')->first();
+        ?>
         @foreach($data as $d)
         <tr>
             <td>{{$id++}}</td>
@@ -143,6 +148,8 @@
                     Meninggal
                 @elseif($d->status == 4)
                     Pisah Kartu Keluarga
+                @elseif($d->status == 5)
+                    Lahir
                 @endif
             </td>
             <td>
@@ -155,6 +162,17 @@
         @endforeach
     </table>
     <h2>Tanggal : {{date('d F Y')}}</h2>
-    <strong>Dicetak oleh : {{Auth::user()->username}}</strong>
+    <!-- <strong>Dicetak oleh : {{Auth::user()->username}}</strong> -->
+    <table class="noborder" style="float:right;width:6cm;border:0;">
+        <tr class="noborder">
+            <th class="noborder">Bukit Aren,<span style="display:inline-block; width: 2.5cm;"></span>{{date('Y')}}<br>KEPALA DESA BUKIT AREN</th>
+        </tr>
+        <tr class="noborder">
+            <th class="noborder" style="height:2cm"></th>
+        </tr>
+        <tr class="noborder">
+            <th class="noborder"><span style="font-weight:bold;text-decoration:underline;text-transform:uppercase">{{$kades->nama_lengkap}}</span><br>NIP. {{$kades->nip}}</th>
+        </tr>
+    </table>
 </body>
 </html>

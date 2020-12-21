@@ -96,7 +96,7 @@
                             <th scope="col">NIK</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Tempat Lahir</th>
+                            <th scope="col">Alamat</th>
                             <th scope="col">Tanggal Lahir</th>
                             <th scope="col">Usia</th>
                             <th scope="col">Aksi</th>
@@ -119,7 +119,7 @@
                                 {{"Perempuan"}}
                                 @endif
                             </td>
-                            <td>{{$p->tempat_lahir}}</td>
+                            <td>{{$p->alamat}}</td>
                             <td>{{Carbon::parse($p->tgl_lahir)->format('d F Y')}}</td>
                             <td>{{Carbon::parse($p->tgl_lahir)->diff(Carbon::now())->format('%y Tahun')}}</td>
                             <td>

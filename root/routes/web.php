@@ -47,6 +47,8 @@ Route::group(['middleware'=>['auth']],function(){
             Route::get('cetak/{id}','MutasiController@cetak')->name('cetak');
             Route::get('laporan/','MutasiController@laporan')->name('laporan');
             Route::post('laporan/cetak','LaporanController@mutasi')->name('cetak_laporan');
+            Route::get('rekap','MutasiController@rekap')->name('rekap');
+            Route::post('rekap/cetak','LaporanController@rekap')->name('cetak_rekap');
             //
             Route::get('detail/{id}','MutasiController@detail')->name('detail');
             Route::get('tambah','MutasiController@add')->name('add');

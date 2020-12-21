@@ -25,6 +25,7 @@
                                 <option value="2" {{$m->status==2?'selected':''}}>Penduduk Pergi</option>
                                 <option value="3" {{$m->status==3?'selected':''}}>Penduduk Meninggal</option>
                                 <option value="4" {{$m->status==4?'selected':''}}>Pisah Kartu Keluarga</option>
+                                <option value="5" {{$m->status==5?'selected':''}}>Lahir</option>
                             </select>
                         </div>
                         <div class="form-group" id="nokk_form" style="display:none">

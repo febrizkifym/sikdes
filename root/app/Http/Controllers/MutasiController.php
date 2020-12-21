@@ -91,10 +91,11 @@ class MutasiController extends Controller
         return redirect('mutasi')->with('success','Hapus Data Berhasil');
     }
     //
-    public function cetak($id){
-        echo $id;
-    }
     public function laporan(){
         return view('mutasi.laporan');
+    }
+    public function rekap(){
+        return view('mutasi.rekap');
+        // return view('laporan.rekap');
     }
 }

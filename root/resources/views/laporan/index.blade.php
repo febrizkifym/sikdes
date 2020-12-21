@@ -5,7 +5,6 @@
     $agama = DB::table('m_agama')->get();
     $pendidikan = DB::table('m_pendidikan')->get();
     $pekerjaan = DB::table('m_pekerjaan')->get();
-    $cacat = DB::table('m_cacat')->get();
 @endphp
 <div class="row">
     <div class="col-lg-12">
