@@ -65,6 +65,8 @@
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary" type="submit">Cetak Laporan</button>
+                                        <button class="btn btn-info" type="reset">Reset</button>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -86,14 +88,32 @@
                                     <label for="">Berdasarkan Usia</label>
                                     <div class="row form-group">
                                         <div class="col-md-6">
+                                            <div class="form-check-inline form-check">
+                                                <label for="usia_tahun" class="form-check-label">
+                                                    <input id="usia_tahun" type="radio" name="usia_tipe" value="tahun" class="form-check-input" checked>Tahun&nbsp;&nbsp;
+                                                </label>
+                                                <label for="usia_bulan" class="form-check-label">
+                                                    <input id="usia_bulan" type="radio" name="usia_tipe" value="bulan" class="form-check-input">Bulan&nbsp;&nbsp;
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-6">
                                             <input name="usia_dari" type="number" min=1 placeholder="Dari" class="form-control" value="@isset($_GET['usia_dari']){{$_GET['usia_dari']}}@endisset">
                                         </div>
                                         <div class="col-md-6">
                                             <input name="usia_ke" type="number" min=1 placeholder="Ke" class="form-control" value="@isset($_GET['usia_ke']){{$_GET['usia_ke']}}@endisset">
                                         </div>
                                     </div>
-                                    <div class="form-group">  
-                                        <button class="btn btn-info" type="reset">Reset</button>
+                                    <div class="form-group">
+                                        <label for="dusun">Berdasarkan Dusun</label>
+                                        <select name="dusun" id="" class="form-control">
+                                            <option value="" selected>Tidak Difilter</option>
+                                            <option value="HULAWALU">HULAWALU</option>
+                                            <option value="TOAO TIMUR">TOAO TIMUR</option>
+                                            <option value="TOAO BARAT">TOAO BARAT</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

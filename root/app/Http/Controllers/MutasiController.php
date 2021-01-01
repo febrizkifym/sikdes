@@ -38,6 +38,13 @@ class MutasiController extends Controller
         $m->id_penduduk = $penduduk->id;
         $m->status = $r->jenis_mutasi;
         $m->created_at = $r->tanggal;
+        //mutasi datang/pergi
+        $m->dusun = $r->dusun;
+        $m->desa = $r->desa;
+        $m->kecamatan = $r->kecamatan;
+        $m->kabupaten = $r->kabupaten;
+        $m->alasan = $r->alasan;
+        //
         $m->keterangan = $r->keterangan;
         $m->save();
         if($r->jenis_mutasi == 3){
@@ -91,6 +98,36 @@ class MutasiController extends Controller
         return redirect('mutasi')->with('success','Hapus Data Berhasil');
     }
     //
+    public function cetak($id){
+        $mutasi = Mutasi::find($id);
+        $jenis = $mutasi->status;
+        switch ($jenis) {
+            case '1':
+                # Penduduk Datang
+                echo "penduduk datang";
+                break;
+            case '2':
+                #Penduduk Pergi
+                $pdf = PDF::loadView('surat.keterangan_pindah',['data'=>$mutasi])->setPaper('a4', 'portrait');
+                return $pdf->stream();
+                // return view('surat.keterangan_pindah',['data'=>$mutasi]);
+                break;
+            case '3':
+                #Penduduk Meninggal
+                echo "penduduk meninggal";
+                break;
+            case '4':
+                #Pisah Kartu Keluarga
+                echo "pisah kartu keluarga";
+                break;
+            case '5':
+                #Kelahiran
+                echo "lahir";
+                break;
+            default:
+                return redirect(route('mutasi'))->with('warning','Terjadi Kesalahan');
+        }
+    }
     public function laporan(){
         return view('mutasi.laporan');
     }

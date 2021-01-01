@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Penduduk;
 use App\Mutasi;
-use PDF;
 use App\Exports\PendudukExport;
 use Maatwebsite\Excel\Facades\Excel;
-use Auth;
 use Carbon\Carbon;
+use Auth;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -27,6 +27,9 @@ class LaporanController extends Controller
         if($r->has('pendidikan') && $r->pendidikan !== null){
             $penduduk->where('id_pend',$r->pendidikan);
         }
+        if($r->has('dusun') && $r->dusun !== null){
+            $penduduk->where('alamat',$r->dusun);
+        }
         if($r->has('status') && $r->status !== null){
             $status = $r->status;
             if($status == 'mati'){
@@ -39,13 +42,25 @@ class LaporanController extends Controller
             }
             $getusia = Penduduk::get(['id','tgl_lahir']);
             $usia = collect();
-            foreach($getusia as $get){
-                $usia->push([
-                    'id_penduduk' => $get->id,
-                    'usia' => (int)Carbon::parse($get->tgl_lahir)->diff(Carbon::now())->format('%y')
-                ]);
+            if($r->usia_tipe == 'tahun'){
+                foreach($getusia as $get){
+                    $usia->push([
+                        'id_penduduk' => $get->id,
+                        'usia' => (int)Carbon::parse($get->tgl_lahir)->diff(Carbon::now())->format('%y')
+                        // 'usia' => Carbon::parse($get->tgl_lahir)->diffinMonths(Carbon::now())
+                    ]);
+                }
+            }else{
+                foreach($getusia as $get){
+                    $usia->push([
+                        'id_penduduk' => $get->id,
+                        // 'usia' => (int)Carbon::parse($get->tgl_lahir)->diff(Carbon::now())->format('%y')
+                        'usia' => Carbon::parse($get->tgl_lahir)->diffinMonths(Carbon::now())
+                    ]);
+                }
             }
             $total = $usia->where('usia','>=',$r->usia_dari)->where('usia','<=',$r->usia_ke)->all();
+            dd($total);
             if($total){
                 $query = collect();
                 foreach($total as $t){
@@ -113,7 +128,7 @@ class LaporanController extends Controller
         if($data->count() > 0){
             // dd($data->get());
             $namaFile = 'laporanPenduduk_'.date('dmY');
-            $pdf = PDF::loadView('laporan.mutasi',['data'=>$data->get(),'bulan'=>$bulan,'tahun'=>$tahun])->setPaper('a4', 'landscape');
+            $pdf = PDF::loadView('laporan.mutasi',['data'=>$data->select(['nama','tempat_lahir','tgl_lahir','jk','t_mutasi.status','t_mutasi.created_at','keterangan','asal','tujuan'])->get(),'bulan'=>$bulan,'tahun'=>$tahun])->setPaper('a4', 'landscape');
             return $pdf->stream();
         }else{
             return redirect(route('mutasi.laporan'))->with('warning','Tidak ada data di bulan yang dipilih');

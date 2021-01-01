@@ -57,7 +57,7 @@
                             <li class="{{Request::is('penduduk*') ? 'active ' : ''}}"><a href="{{url('/penduduk')}}"><i class="ti-id-badge"></i> <span>Data Induk</span></a></li>
                             <li class="{{Request::is('keluarga*') ? 'active ' : ''}}"><a href="{{url('/keluarga')}}"><i class="ti-home"></i> <span>Kartu Keluarga</span></a></li>
                             <li class="{{Request::is('mutasi*') ? 'active ' : ''}}"><a href="{{url('/mutasi')}}"><i class="ti-book"></i> <span>Mutasi</span></a></li>
-                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Cetak Laporan</span></a></li>
+                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Laporan Penduduk</span></a></li>
                             <!-- <li class="{{Request::is('surat*') ? 'active ' : ''}}">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-email"></i> <span>Cetak Surat</span></a>
                                 <ul class="collapse">
@@ -78,7 +78,7 @@
                             <li class="{{Request::is('user*') ? 'active ' : ''}}"><a href="{{url('/user')}}"><i class="ti-user"></i> <span>User</span></a></li>
                             <li class="{{Request::is('kades*') ? 'active ' : ''}}"><a href="{{url('/kades')}}"><i class="ti-key"></i> <span>Kepala Desa</span></a></li>
                             @else
-                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Cetak Laporan</span></a></li>
+                            <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Laporan Penduduk</span></a></li>
                             @endif
                         </ul>
                     </nav>

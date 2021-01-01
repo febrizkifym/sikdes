@@ -19,7 +19,7 @@
         h1{font-size:16pt;}
         strong{margin-top:5px;}
         body{
-            font-family:"Bookman Old Style";
+            font-family:"Bookman Old Style", monospace;
             font-size:9pt;
         }
         .a4wrapper{

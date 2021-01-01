@@ -71,12 +71,12 @@ class PendudukController extends Controller
         
         $p->warganegara = $r->warganegara;
         $p->kedudukan = $r->kedudukan;
-        $p->butahuruf = $r->butahuruf;
+        // $p->butahuruf = $r->butahuruf;
         
         $p->id_agama = $r->agama;
         $p->id_pend = $r->pendidikan;
         $p->id_pekerjaan = $r->pekerjaan;
-        $p->id_cacat = $r->cacat;
+        // $p->id_cacat = $r->cacat;
         
         $p->save();
     	return redirect('/penduduk')->with('success','Input Data Berhasil');
@@ -100,12 +100,12 @@ class PendudukController extends Controller
         
         $p->warganegara = $r->warganegara;
         $p->kedudukan = $r->kedudukan;
-        $p->butahuruf = $r->butahuruf;
+        // $p->butahuruf = $r->butahuruf;
         
         $p->id_agama = $r->agama;
         $p->id_pend = $r->pendidikan;
         $p->id_pekerjaan = $r->pekerjaan;
-        $p->id_cacat = $r->cacat;
+        // $p->id_cacat = $r->cacat;
         
         $p->save();
     	return redirect('/penduduk')->with('success','Update Data Berhasil');

@@ -60,7 +60,11 @@
                         <div class="row form-group">
                             <div class="col col-md-4"><label class="form-control-label">Alamat</label></div>
                             <div class="col-12 col-md-8">
-                                <input required type="text" name="alamat" placeholder="Alamat Lengkap" class="form-control">
+                                <select name="alamat" class="form-control">
+                                    <option value="HULAWALU" selected>HULAWALU</option>
+                                    <option value="TOAO TIMUR">TOAO TIMUR</option>
+                                    <option value="TOAO BARAT">TOAO BARAT</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row form-group">

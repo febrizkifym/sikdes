@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label for="jenis_mutasi">Jenis Mutasi</label>
                             <select name="jenis_mutasi" id="jenisMutasi" class="form-control" required>
-                                <option value="1">Penduduk Datang</option>
+                                <option value="1" selected>Penduduk Datang</option>
                                 <option value="2">Penduduk Pergi</option>
                                 <option value="3">Penduduk Meninggal</option>
                                 <option value="4">Pisah Kartu Keluarga</option>
@@ -41,6 +41,28 @@
                             <label for="nokk">Nomor KK Baru</label>
                             <input type="text" class="form-control" name="nokk">
                         </div>
+                        <!-- PERGI -->
+                        <div class="form-group" id="dusun_form" class="pindah_form" style="display:none">
+                            <label for="dusun">Dusun</label>
+                            <input type="text" class="form-control" name="dusun">
+                        </div>
+                        <div class="form-group" id="desa_form" class="pindah_form" style="display:none">
+                            <label for="desa">Desa</label>
+                            <input type="text" class="form-control" name="desa">
+                        </div>
+                        <div class="form-group" id="kecamatan_form" class="pindah_form" style="display:none">
+                            <label for="kecamatan">Kecamatan</label>
+                            <input type="text" class="form-control" name="kecamatan">
+                        </div>
+                        <div class="form-group" id="kabupaten_form" class="pindah_form" style="display:none">
+                            <label for="kabupaten">Kabupaten</label>
+                            <input type="text" class="form-control" name="kabupaten">
+                        </div>
+                        <div class="form-group" id="alasan_form" class="pindah_form" style="display:none">
+                            <label for="alasan">Alasan Pindah</label>
+                            <input type="text" class="form-control" name="alasan">
+                        </div>
+                        <!-- /PERGI -->
                         <div class="form-group">
                             <label for="tanggal">Tanggal</label>
                             <input type="date" class="form-control" name="tanggal" required>
@@ -71,12 +93,48 @@
         });
         jQuery('#jenisMutasi').change(function(){
         var jenisMutasi = jQuery('#jenisMutasi').val();
-                console.log(jenisMutasi);
-            if(jenisMutasi == 4){
-                jQuery('#nokk_form').show();
-           }else{
-               jQuery('#nokk_form').hide();
-               }
+            if(jenisMutasi == 1){
+                //DATANG
+                jQuery('#nokk_form').hide(100);
+                //
+                jQuery('#dusun_form').hide(100);
+                jQuery('#alasan_form').hide(100);
+                jQuery('#desa_form').hide(100);
+                jQuery('#kecamatan_form').hide(100);
+                jQuery('#kabupaten_form').hide(100);
+                //
+            }
+            else if(jenisMutasi == 2){
+                //PERGI
+                jQuery('#nokk_form').hide(100);
+                //
+                jQuery('#alasan_form').show(100);
+                jQuery('#dusun_form').show(100);
+                jQuery('#desa_form').show(100);
+                jQuery('#kecamatan_form').show(100);
+                jQuery('#kabupaten_form').show(100);
+                //
+            }
+            else if(jenisMutasi == 4){
+                //PINDAH KK
+                jQuery('#nokk_form').show(100);
+                //
+                jQuery('#dusun_form').hide(100);
+                jQuery('#desa_form').hide(100);
+                jQuery('#alasan_form').hide(100);
+                jQuery('#kecamatan_form').hide(100);
+                jQuery('#kabupaten_form').hide(100);
+                //
+            }else{
+                jQuery('#nokk_form').hide(100);
+                //
+                jQuery('#alasan_form').hide(100);
+                jQuery('#dusun_form').hide(100);
+                jQuery('#desa_form').hide(100);
+                jQuery('#kecamatan_form').hide(100);
+                jQuery('#kabupaten_form').hide(100);
+                //
+            }
         });
     });
 </script>

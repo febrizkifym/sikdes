@@ -140,15 +140,15 @@
                 @endif
             </td>
             <td>
-                @if($d->status == 1)
+                @if($d->status === 1)
                     Datang
-                @elseif($d->status == 2)
+                @elseif($d->status === 2)
                     Pergi
-                @elseif($d->status == 3)
+                @elseif($d->status === 3)
                     Meninggal
-                @elseif($d->status == 4)
+                @elseif($d->status === 4)
                     Pisah Kartu Keluarga
-                @elseif($d->status == 5)
+                @elseif($d->status === 5)
                     Lahir
                 @endif
             </td>
@@ -156,6 +156,11 @@
                 {{Carbon::parse($d->created_at)->format('d M Y')}}
             </td>
             <td>
+                @if($d->status == 1)
+                    Pindah dari {{$d->asal}}.&nbsp;
+                @elseif($d->status == 2)
+                    Pindah ke {{$d->tujuan}}.&nbsp;
+                @endif
                 {{$d->keterangan}}
             </td>
         </tr>
