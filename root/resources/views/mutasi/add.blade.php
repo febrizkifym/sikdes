@@ -41,6 +41,12 @@
                             <label for="nokk">Nomor KK Baru</label>
                             <input type="text" class="form-control" name="nokk">
                         </div>
+                        <!-- MENINGGAL -->
+                        <div class="form-group" id="tanggal_form" class="tanggal_form" style="display:none">
+                            <label for="tanggal_surat">Tanggal Meninggal</label>
+                            <input type="date" class="form-control" name="tanggal_surat">
+                        </div>
+                        <!-- /MENINGGAL -->
                         <!-- PERGI -->
                         <div class="form-group" id="dusun_form" class="pindah_form" style="display:none">
                             <label for="dusun">Dusun</label>
@@ -59,16 +65,16 @@
                             <input type="text" class="form-control" name="kabupaten">
                         </div>
                         <div class="form-group" id="alasan_form" class="pindah_form" style="display:none">
-                            <label for="alasan">Alasan Pindah</label>
+                            <label for="alasan">Alasan/Penyebab</label>
                             <input type="text" class="form-control" name="alasan">
                         </div>
                         <!-- /PERGI -->
                         <div class="form-group">
-                            <label for="tanggal">Tanggal</label>
+                            <label for="tanggal">Tanggal Mutasi</label>
                             <input type="date" class="form-control" name="tanggal" required>
                         </div>
                         <div class="form-group">
-                            <label for="keterangan">Keterangan</label>
+                            <label for="keterangan">Keterangan / Klasifikasi</label>
                             <textarea name="keterangan" id="" cols="30" rows="3" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
@@ -103,6 +109,7 @@
                 jQuery('#kecamatan_form').hide(100);
                 jQuery('#kabupaten_form').hide(100);
                 //
+                jQuery('#tanggal_form').hide(100);
             }
             else if(jenisMutasi == 2){
                 //PERGI
@@ -114,6 +121,20 @@
                 jQuery('#kecamatan_form').show(100);
                 jQuery('#kabupaten_form').show(100);
                 //
+                jQuery('#tanggal_form').hide(100);
+
+            }
+            else if(jenisMutasi == 3){
+                //MENINGGAL
+                jQuery('#nokk_form').hide(100);
+                //
+                jQuery('#dusun_form').show(100);
+                jQuery('#desa_form').show(100);
+                jQuery('#alasan_form').show(100);
+                jQuery('#kecamatan_form').show(100);
+                jQuery('#kabupaten_form').show(100);
+                //
+                jQuery('#tanggal_form').show(100);
             }
             else if(jenisMutasi == 4){
                 //PINDAH KK
@@ -125,6 +146,7 @@
                 jQuery('#kecamatan_form').hide(100);
                 jQuery('#kabupaten_form').hide(100);
                 //
+                jQuery('#tanggal_form').hide(100);
             }else{
                 jQuery('#nokk_form').hide(100);
                 //
@@ -134,6 +156,7 @@
                 jQuery('#kecamatan_form').hide(100);
                 jQuery('#kabupaten_form').hide(100);
                 //
+                jQuery('#tanggal_form').hide(100);
             }
         });
     });

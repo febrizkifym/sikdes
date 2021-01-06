@@ -79,7 +79,7 @@ Route::group(['middleware'=>['auth']],function(){
 });
 
 //routing laporan
-Route::get('/laporan','LaporanController@index');
+Route::get('/laporan','LaporanController@index')->name('laporan');
 Route::post('/laporan/cetak','LaporanController@cetak');
 
 //routing surat

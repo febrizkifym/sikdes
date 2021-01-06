@@ -64,7 +64,7 @@
                         <td>{{Carbon::parse($k->tgl_lahir)->diff(Carbon::now())->format('%y Tahun')}}</td>
                         <td>
                             @if($k['deleted_at'] == true)
-                            Meninggal
+                            Meninggal / Pindah
                             @else
                             -
                             @endif

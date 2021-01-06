@@ -99,6 +99,7 @@
             $pekerjaan = DB::table('m_pekerjaan')->find($d->id_pekerjaan);
             $cacat = DB::table('m_cacat')->find($d->id_cacat);
             $kades = DB::table('users')->where('tipe','3')->first();
+            dd($kades);
         @endphp
         <tr>
             <td>{{$id++}}</td>
