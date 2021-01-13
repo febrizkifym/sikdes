@@ -79,6 +79,8 @@
                             <li class="{{Request::is('kades*') ? 'active ' : ''}}"><a href="{{url('/kades')}}"><i class="ti-key"></i> <span>Kepala Desa</span></a></li>
                             @else
                             <li class="{{Request::is('laporan*') ? 'active ' : ''}}"><a href="{{url('/laporan')}}"><i class="ti-printer"></i> <span>Laporan Penduduk</span></a></li>
+                            <li class="{{Request::is('mutasi/laporan') ? 'active ' : ''}}"><a href="{{url('/mutasi/laporan')}}"><i class="ti-exchange-vertical"></i> <span>Laporan Mutasi</span></a></li>
+                            <li class="{{Request::is('mutasi/rekap') ? 'active ' : ''}}"><a href="{{url('/mutasi/rekap')}}"><i class="ti-bookmark-alt"></i> <span>Laporan Rekap Penduduk</span></a></li>
                             @endif
                         </ul>
                     </nav>

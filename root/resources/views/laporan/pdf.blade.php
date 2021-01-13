@@ -97,9 +97,7 @@
             $agama = DB::table('m_agama')->find($d->id_agama);
             $pendidikan = DB::table('m_pendidikan')->find($d->id_pend);
             $pekerjaan = DB::table('m_pekerjaan')->find($d->id_pekerjaan);
-            $cacat = DB::table('m_cacat')->find($d->id_cacat);
             $kades = DB::table('users')->where('tipe','3')->first();
-            dd($kades);
         @endphp
         <tr>
             <td>{{$id++}}</td>

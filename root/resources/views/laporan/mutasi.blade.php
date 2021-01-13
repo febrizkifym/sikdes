@@ -156,11 +156,6 @@
                 {{Carbon::parse($d->created_at)->format('d M Y')}}
             </td>
             <td>
-                @if($d->status == 1)
-                    Pindah dari {{$d->asal}}.&nbsp;
-                @elseif($d->status == 2)
-                    Pindah ke {{$d->tujuan}}.&nbsp;
-                @endif
                 {{$d->keterangan}}
             </td>
         </tr>

@@ -35,9 +35,9 @@
                         <div class="col-12 col-md-9">
                             <p class="form-control-static">
                                 @if($m->status == 1)
-                                    Datang
+                                    Mutasi Datang
                                 @elseif($m->status == 2)
-                                    Pergi
+                                    Mutasi Pindah
                                 @elseif($m->status == 3)
                                     Meninggal
                                 @elseif($m->status == 4)
@@ -49,9 +49,25 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Tanggal Mutasi</label></div>
                         <div class="col-12 col-md-9">
-                            <p class="form-control-static">{{$m->created_at}}</p>
+                            <p class="form-control-static"> {{date('d F Y',strtotime($m->created_at))}}</p>
                         </div>
                     </div>
+                    @if($m->dusun != NULL)
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label class=" form-control-label">Tempat Mutasi</label></div>
+                        <div class="col-12 col-md-9">
+                            <p class="form-control-static">Dusun {{$m->dusun}}, Desa {{$m->desa}}, Kecamatan {{$m->kecamatan}}, Kabupaten {{$m->kabupaten}}</p>
+                        </div>
+                    </div>
+                    @endif
+                    @if($m->alasan != NULL)
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label class=" form-control-label">Alasan / Penyebab</label></div>
+                        <div class="col-12 col-md-9">
+                            <p class="form-control-static">{{$m->alasan}}</p>
+                        </div>
+                    </div>
+                    @endif
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Keterangan</label></div>
                         <div class="col-12 col-md-9">

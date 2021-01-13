@@ -32,6 +32,11 @@
                             <div class="col col-md-4"><label class="form-control-label">NIK</label></div>
                             <div class="col-12 col-md-8">
                                 <input required type="text" name="nik" placeholder="Nomor Induk Kependudukan" class="form-control" value="{{$p->nik}}">
+                                @if($errors->has('nik'))
+                                <div class="alert alert-danger" style="margin-top:5px;text-transform:capitalize">
+                                    {{$errors->first('nik')}}
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="row form-group">
@@ -135,6 +140,17 @@
                                     <option value="2" {{$p->warganegara==2?'selected':''}}>Warga Negara Asing</option>
                                     <option value="3" {{$p->warganegara==3?'selected':''}}>Dwi Warga Negara</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-4"><label for="foto" class="form-control-label">Pas Foto (Max : 2 MB)</label></div>
+                            <div class="col-12 col-md-8">
+                                <input type="file" name="foto" id="foto" class="form-control">
+                                @if($errors->has('foto'))
+                                <div class="alert alert-danger" style="margin-top:5px;text-transform:capitalize">
+                                    {{$errors->first('foto')}}
+                                </div>
+                                @endif
                             </div>
                         </div>
                    </div>

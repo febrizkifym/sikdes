@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Image;
+use File;
+use Storage;
+
 use App\Penduduk;
 
 class PendudukController extends Controller
 {
 	public function __construct(){
-		$this->middleware('auth');
+        $this->middleware('auth');
+        $this->path = 'images/penduduk';
 	}
     public function index(Request $r){
         
@@ -57,6 +64,20 @@ class PendudukController extends Controller
         return view('penduduk.add');
     }
     public function post(Request $r){
+        $this->validate($r, [
+            'struktur' => 'image|mimes:jpg,png,jpeg',
+            'gambar' => 'image|mimes:jpg,png,jpeg',
+            'nik' => 'required|size:16'
+        ],[
+            'image' => ':attribute harus berupa gambar',
+            'mimes' => 'Format file harus berupa jpg,jpeg,png',
+            'size' => ':attribute harus berisi :size digit',
+        ]);
+        
+        if (!File::isDirectory($this->path)) {
+            File::makeDirectory($this->path);
+        }
+
         $p = new Penduduk;
         $p->nama = $r->nama;
         $p->nik = $r->nik;
@@ -68,6 +89,7 @@ class PendudukController extends Controller
         
         $p->tempat_lahir = $r->tempatlahir;
         $p->tgl_lahir = $r->tanggallahir;
+        $usia = Carbon::parse($p->tgl_lahir)->age;
         
         $p->warganegara = $r->warganegara;
         $p->kedudukan = $r->kedudukan;
@@ -78,6 +100,9 @@ class PendudukController extends Controller
         $p->id_pekerjaan = $r->pekerjaan;
         // $p->id_cacat = $r->cacat;
         
+        if(($p->kedudukan == 1 || $p->kedudukan == 2) && ($usia < 17)){
+            return redirect(route('penduduk.add'))->with('warning','Terjadi kesalahan');
+        }
         $p->save();
     	return redirect('/penduduk')->with('success','Input Data Berhasil');
     }
@@ -86,6 +111,17 @@ class PendudukController extends Controller
         return view('penduduk.edit',['p'=>$penduduk]);
     }
     public function update(Request $r,$id){
+        $this->validate($r, [
+            'struktur' => 'image|mimes:jpg,png,jpeg|max:2048',
+            'gambar' => 'image|mimes:jpg,png,jpeg|max:2048',
+            'nik' => 'required|size:16'
+        ],[
+            'image' => ':attribute harus berupa gambar',
+            'mimes' => 'Format file harus berupa jpg,jpeg,png',
+            'max' => 'Ukuran file gambar tidak bisa lebih dari 2 MB',
+            'size' => ':attribute harus berisi :size digit',
+        ]);
+
         $p = Penduduk::find($id);
         $p->nama = $r->nama;
         $p->nik = $r->nik;
@@ -97,6 +133,7 @@ class PendudukController extends Controller
         
         $p->tempat_lahir = $r->tempatlahir;
         $p->tgl_lahir = $r->tanggallahir;
+        $usia = Carbon::parse($p->tgl_lahir)->age;
         
         $p->warganegara = $r->warganegara;
         $p->kedudukan = $r->kedudukan;
@@ -106,7 +143,22 @@ class PendudukController extends Controller
         $p->id_pend = $r->pendidikan;
         $p->id_pekerjaan = $r->pekerjaan;
         // $p->id_cacat = $r->cacat;
-        
+
+        //upload foto
+        if($r->foto){
+            $foto_old = $p->foto;
+            $foto = $r->file('foto');
+            $foto_filename = Str::slug($p->nik,'_'). '.' . $foto->getClientOriginalExtension();
+            Image::make($foto)->resize(371,557,function($const){
+                $const->aspectRatio();
+            })->save($this->path.'/'.$foto_filename);
+            Storage::delete('img/'.$foto_old);
+            $p->foto = $foto_filename;
+        }
+
+        if(($p->kedudukan == 1 || $p->kedudukan == 2) && ($usia < 17)){
+           return redirect(route('penduduk.edit',$p->id))->with('warning','Terjadi kesalahan');
+        }
         $p->save();
     	return redirect('/penduduk')->with('success','Update Data Berhasil');
     }

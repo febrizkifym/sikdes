@@ -135,7 +135,7 @@ class LaporanController extends Controller
         if ($data->count() > 0) {
             // dd($data->get());
             $namaFile = 'laporanPenduduk_' . date('dmY');
-            $pdf = PDF::loadView('laporan.mutasi', ['data' => $data->select(['nama', 'tempat_lahir', 'tgl_lahir', 'jk', 't_mutasi.status', 't_mutasi.created_at', 'keterangan', 'asal', 'tujuan'])->get(), 'bulan' => $bulan, 'tahun' => $tahun])->setPaper('a4', 'landscape');
+            $pdf = PDF::loadView('laporan.mutasi', ['data' => $data->select(['nama', 'tempat_lahir', 'tgl_lahir', 'jk', 't_mutasi.status', 't_mutasi.created_at', 'keterangan'])->get(), 'bulan' => $bulan, 'tahun' => $tahun])->setPaper('a4', 'landscape');
             return $pdf->stream();
         } else {
             return redirect(route('mutasi.laporan'))->with('warning', 'Tidak ada data di bulan yang dipilih');
@@ -186,13 +186,16 @@ class LaporanController extends Controller
         $tanggal = $r->tahun . "-" . $r->bulan . "-01 00:00:00";
         $tanggal2 = $r->tahun . "-" . $r->bulan . "-31 00:00:00";
         $data = Mutasi::whereBetween("t_mutasi.created_at", [$tanggal, $tanggal2]);
-        if ($data->count() > 0) {
-            // dd($data->get());
+        // if ($data->count() > 0) {
             $namaFile = 'laporanPenduduk_' . date('dmY');
             $pdf = PDF::loadView('laporan.rekap', ['data' => $data->get(), 'bulan' => $bulan, 'tahun' => $tahun, 'kode_bulan' => $kode_bulan])->setPaper('a4', 'landscape');
             return $pdf->stream();
-        } else {
-            return redirect(route('mutasi.laporan'))->with('warning', 'Tidak ada data di bulan yang dipilih');
-        }
+            // return view('laporan.rekap', ['data' => $data->get(), 'bulan' => $bulan, 'tahun' => $tahun, 'kode_bulan' => $kode_bulan]);
+        // } else {
+        
+            // return redirect(route('mutasi.laporan'))->with('warning', 'Tidak ada data di bulan yang dipilih');
+            
+        // }
+        
     }
 }

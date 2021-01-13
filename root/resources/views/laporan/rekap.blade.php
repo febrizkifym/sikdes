@@ -89,23 +89,24 @@
     $m_bulan_ini[6] = DB::table('t_mutasi')->whereMonth('created_at','=',$kode_bulan)->join('t_penduduk','t_penduduk.id','t_mutasi.id_penduduk')->where("jk",2)->count();
     $m_bulan_ini[7] = DB::table('t_mutasi')->whereMonth('created_at','=',$kode_bulan)->join('t_penduduk','t_penduduk.id','t_mutasi.id_penduduk')->where("jk",2)->count();
     //penduduk bulan ini
-    $p_bulan_ini[0] = DB::table('t_penduduk')->where('jk','1')->where('alamat','like','%timur%')->count();
-    $p_bulan_ini[1] = DB::table('t_penduduk')->where('jk','2')->where('alamat','like','%timur%')->count();
-    $p_bulan_ini[2] = DB::table('t_penduduk')->where('jk','1')->where('alamat','like','%barat%')->count();
-    $p_bulan_ini[3] = DB::table('t_penduduk')->where('jk','2')->where('alamat','like','%barat%')->count();
-    $p_bulan_ini[4] = DB::table('t_penduduk')->where('jk','1')->where('alamat','like','%hulawalu%')->count();
-    $p_bulan_ini[5] = DB::table('t_penduduk')->where('jk','2')->where('alamat','like','%hulawalu%')->count();
-    $p_bulan_ini[6] = DB::table('t_penduduk')->where('jk','1')->count();
-    $p_bulan_ini[7] = DB::table('t_penduduk')->where('jk','2')->count();
+    $p_bulan_ini[0] = DB::table('t_penduduk')->where('jk','1')->where('alamat','like','%timur%')->count() - $m_bulan_ini[0];
+    $p_bulan_ini[1] = DB::table('t_penduduk')->where('jk','2')->where('alamat','like','%timur%')->count() - $m_bulan_ini[1];
+    $p_bulan_ini[2] = DB::table('t_penduduk')->where('jk','1')->where('alamat','like','%barat%')->count() - $m_bulan_ini[2];
+    $p_bulan_ini[3] = DB::table('t_penduduk')->where('jk','2')->where('alamat','like','%barat%')->count() - $m_bulan_ini[3];
+    $p_bulan_ini[4] = DB::table('t_penduduk')->where('jk','1')->where('alamat','like','%hulawalu%')->count() - $m_bulan_ini[4];
+    $p_bulan_ini[5] = DB::table('t_penduduk')->where('jk','2')->where('alamat','like','%hulawalu%')->count() - $m_bulan_ini[5];
+    $p_bulan_ini[6] = DB::table('t_penduduk')->where('jk','1')->count() - $m_bulan_ini[6];
+    $p_bulan_ini[7] = DB::table('t_penduduk')->where('jk','2')->count() - $m_bulan_ini[7];
+    // dd($p_bulan_ini);
     //penduduk bulan lalu
-    $p_bulan_lalu[0] = $p_bulan_ini[0] - $m_bulan_ini[0];
-    $p_bulan_lalu[1] = $p_bulan_ini[1] - $m_bulan_ini[1];
-    $p_bulan_lalu[2] = $p_bulan_ini[2] - $m_bulan_ini[2];
-    $p_bulan_lalu[3] = $p_bulan_ini[3] - $m_bulan_ini[3];
-    $p_bulan_lalu[4] = $p_bulan_ini[4] - $m_bulan_ini[4];
-    $p_bulan_lalu[5] = $p_bulan_ini[5] - $m_bulan_ini[5];
-    $p_bulan_lalu[6] = $p_bulan_ini[6] - $m_bulan_ini[6];
-    $p_bulan_lalu[7] = $p_bulan_ini[7] - $m_bulan_ini[7];
+    $p_bulan_lalu[0] = $p_bulan_ini[0] + $m_bulan_ini[0];
+    $p_bulan_lalu[1] = $p_bulan_ini[1] + $m_bulan_ini[1];
+    $p_bulan_lalu[2] = $p_bulan_ini[2] + $m_bulan_ini[2];
+    $p_bulan_lalu[3] = $p_bulan_ini[3] + $m_bulan_ini[3];
+    $p_bulan_lalu[4] = $p_bulan_ini[4] + $m_bulan_ini[4];
+    $p_bulan_lalu[5] = $p_bulan_ini[5] + $m_bulan_ini[5];
+    $p_bulan_lalu[6] = $p_bulan_ini[6] + $m_bulan_ini[6];
+    $p_bulan_lalu[7] = $p_bulan_ini[7] + $m_bulan_ini[7];
     //lahir bulan ini
     $l_bulan_ini[0] = DB::table('t_mutasi')->whereMonth('created_at','=',$kode_bulan)->join('t_penduduk','t_penduduk.id','t_mutasi.id_penduduk')->where("jk",1)->where("t_mutasi.status",4)->where('alamat','like','%timur%')->count();
     $l_bulan_ini[1] = DB::table('t_mutasi')->whereMonth('created_at','=',$kode_bulan)->join('t_penduduk','t_penduduk.id','t_mutasi.id_penduduk')->where("jk",2)->where("t_mutasi.status",4)->where('alamat','like','%timur%')->count();
@@ -179,7 +180,10 @@
             <th>TOAO TIMUR</th>
             <!-- Penduduk Bulan Lalu -->
             <td>{{$p_bulan_lalu[0]}}</td>
-            <td>{{$p_bulan_lalu[1]}}</td>
+            <td>
+            
+            
+            {{$p_bulan_lalu[1]}}</td>
             <td>{{$p_bulan_lalu[0] + $p_bulan_lalu[1]}}</td>
             <!-- Lahir Bulan Ini -->
             <td>{{$l_bulan_ini[0]}}</td>

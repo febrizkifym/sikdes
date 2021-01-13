@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2021 at 04:36 AM
+-- Generation Time: Jan 08, 2021 at 04:47 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -68,34 +68,6 @@ INSERT INTO `m_agama` (`id`, `agama`) VALUES
 (6, 'Khonghucu'),
 (7, 'Kepercayaan Kepada Tuhan YME'),
 (8, 'Aliran Kepercayaan Lainnya');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `m_cacat`
---
-
-CREATE TABLE `m_cacat` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `cacat` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `m_cacat`
---
-
-INSERT INTO `m_cacat` (`id`, `cacat`) VALUES
-(1, 'Tuna Rungu'),
-(2, 'Tuna Wicara'),
-(3, 'Tuna Netra'),
-(4, 'Tuna Daksa'),
-(5, 'Lumpuh'),
-(6, 'Sumbing'),
-(7, 'Cacat Kulit'),
-(8, 'Idiot'),
-(9, 'Gila'),
-(10, 'Stress'),
-(11, 'Autis');
 
 -- --------------------------------------------------------
 
@@ -226,7 +198,8 @@ CREATE TABLE `t_mutasi` (
 --
 
 INSERT INTO `t_mutasi` (`id`, `id_penduduk`, `status`, `dusun`, `desa`, `kecamatan`, `kabupaten`, `alasan`, `tanggal_surat`, `keterangan`, `created_at`, `updated_at`) VALUES
-(16, 2, 2, 'Leato', 'Bakti', 'Pulubala', 'Gorontalo', 'Mengikuti Suami', NULL, '-', '2021-01-05 16:00:00', '2021-01-06 03:35:59');
+(19, 2, 3, 'Leato', 'Bakti', 'Pulubala', 'Gorontalo', 'Bosan', '2021-01-08', NULL, '2021-01-07 16:00:00', '2021-01-07 17:35:03'),
+(20, 18, 3, 'Leato', 'Bumbulan', 'Paguat', 'Pohuwato', 'Mengikuti Suami', '2021-01-08', NULL, '2021-01-07 16:00:00', '2021-01-08 02:35:21');
 
 -- --------------------------------------------------------
 
@@ -257,9 +230,9 @@ CREATE TABLE `t_penduduk` (
 --
 
 INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `warganegara`, `kedudukan`, `tempat_lahir`, `alamat`, `tgl_lahir`, `id_agama`, `id_pend`, `id_pekerjaan`, `deleted_at`) VALUES
-(2, '7501160802700001', '7501162402070701', 'Tahir Isima', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1970-02-08', 1, 5, 3, '2021-01-06 03:35:59'),
+(2, '7501160802700001', '7501162402070701', 'Tahir Isima', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1970-02-08', 1, 5, 3, '2021-01-07 17:35:03'),
 (17, '7501165001710001', '7501135001710002', 'Sriko Hamrudin', 2, 1, 1, 2, 'Limboto', 'HULAWALU', '1971-01-10', 1, 8, 2, NULL),
-(18, '7501165701950001', '7501162402070701', 'Ulviana Adelina T Isima', 2, 2, 1, 3, 'Kab.Gorontalo', 'HULAWALU', '2001-08-10', 1, 19, 33, NULL),
+(18, '7501165701950001', '7501162402070701', 'Ulviana Adelina T Isima', 2, 2, 1, 3, 'Kab.Gorontalo', 'HULAWALU', '2001-08-10', 1, 19, 33, '2021-01-08 02:35:21'),
 (19, '7501161008010001', '7501162402070701', 'Erwin Saputra T Isima', 1, 2, 1, 3, 'Pongongaila', 'HULAWALU', '2001-08-10', 1, 11, 32, NULL),
 (20, '7501162605410001', '7501162402070697', 'Dani Halamani', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1941-05-26', 1, 4, 3, NULL),
 (21, '7501164506580001', '7501162402070697', 'Hasana A Usman', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1958-06-05', 1, 4, 2, NULL),
@@ -367,7 +340,7 @@ INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `wargane
 (123, '7501161005850002', '7501162811070038', 'Yahya Ishak', 1, 1, 1, 1, 'Kab.Gorontalo', 'HULAWALU', '1985-05-10', 1, 5, 3, NULL),
 (124, '7501165103920001', '7501162811070038', 'Yustina Yusuf', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1992-03-11', 1, 4, 2, NULL),
 (125, '7501166802070001', '7501162811070038', 'Panti Y Ishak', 2, 1, 1, 3, 'Kab.Gorontalo', 'HULAWALU', '2007-02-28', 1, 6, 32, NULL),
-(126, '7501161809190001', '7501162811070038', 'Pitan Yahya Ishak', 1, 2, 1, 3, 'Gorontalo', 'HULAWALU', '2019-09-18', 1, 24, 33, '2020-12-27 04:50:31'),
+(126, '7501161809190001', '7501162811070038', 'Pitan Yahya Ishak', 1, 2, 1, 3, 'Gorontalo', 'HULAWALU', '2019-09-18', 1, 24, 33, NULL),
 (127, '7501164303560001', '7501162002150002', 'Fatma Lajati', 2, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1956-03-03', 1, 4, 2, NULL),
 (128, '7501160208510001', '7501162002150002', 'Yusuf Madi', 1, 1, 1, 4, 'Gorontalo', 'HULAWALU', '1951-08-02', 1, 4, 3, NULL),
 (129, '7501161002490001', '7501162402070721', 'Abdullah Igirisa', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1949-02-10', 1, 4, 3, NULL),
@@ -450,7 +423,7 @@ INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `wargane
 (206, '7501160208540001', '7501162402070660', 'Kisman Soe', 1, 1, 1, 1, 'Pongongaila', 'HULAWALU', '1954-08-02', 1, 5, 3, NULL),
 (207, '7501164407540001', '7501162402070660', 'Sartin Seu', 2, 1, 1, 2, 'Pongongaila', 'HULAWALU', '1954-07-04', 1, 5, 2, NULL),
 (208, '7501161311960001', '7501162402070660', 'Yusuf K Soe', 1, 2, 1, 3, 'Pongongaila', 'HULAWALU', '1996-11-13', 1, 11, 33, NULL),
-(209, '7501166407390001', '7501162402070660', 'Arina Pilo', 2, 1, 1, 4, 'Pongongaila', 'HULAWALU', '1939-07-24', 1, 5, 33, '2020-12-27 16:48:44'),
+(209, '7501166407390001', '7501162402070660', 'Arina Pilo', 2, 1, 1, 4, 'Pongongaila', 'HULAWALU', '1939-07-24', 1, 5, 33, NULL),
 (210, '7501162507750004', '7501162402070660', 'Arifin Seu', 1, 2, 1, 4, 'Gorontalo', 'HULAWALU', '1975-07-25', 1, 4, 3, NULL),
 (211, '7501160908740001', '7501162402070661', 'Iwan K Soe', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1972-08-09', 1, 5, 3, NULL),
 (212, '7501164702830002', '7501162402070661', 'Umira Saleh', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1983-02-07', 1, 5, 2, NULL),
@@ -527,7 +500,7 @@ INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `wargane
 (283, '7501165004110001', '7501161101080001', 'Zaira Aprilia Abdjul', 2, 2, 1, 3, 'Kab.Gorontalo', 'HULAWALU', '2011-04-10', 1, 3, 32, NULL),
 (284, '7501160910700001', '7501162402070596', 'Mohamad K Hiyola', 1, 1, 1, 1, 'Pongongaila', 'HULAWALU', '1970-10-09', 1, 5, 3, NULL),
 (285, '7501164203750001', '7501162402070596', 'Saira Moo', 2, 1, 1, 2, 'Pongongaila', 'HULAWALU', '1975-03-02', 1, 5, 2, NULL),
-(286, '7501162008920001', '7501162402070596', 'Febrianto Hiola', 1, 2, 1, 3, 'Pulubala', 'HULAWALU', '1992-08-20', 1, 11, 33, '2020-12-28 00:43:16'),
+(286, '7501162008920001', '7501162402070596', 'Febrianto Hiola', 1, 2, 1, 3, 'Pulubala', 'HULAWALU', '1992-08-20', 1, 11, 33, NULL),
 (287, '7501165207110001', '7501162402070596', 'Fauziah Ramadani Hiyola', 2, 2, 1, 3, 'Gorontalo', 'HULAWALU', '2011-07-12', 1, 3, 32, NULL),
 (288, '7501160708690001', '7501162402070648', 'Ishak K Hiola', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1969-08-07', 1, 5, 3, NULL),
 (289, '7501165404730001', '7501162402070648', 'Maryam I Ahmad', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1973-04-14', 1, 4, 2, NULL),
@@ -648,7 +621,7 @@ INSERT INTO `t_penduduk` (`id`, `nik`, `no_kk`, `nama`, `jk`, `status`, `wargane
 (403, '7501160904030001', '7501162402070607', 'Fafat R Hamid', 1, 0, 1, 3, 'Gorontalo', 'HULAWALU', '2003-04-09', 1, 9, 32, NULL),
 (404, '7501166412100001', '7501162402070607', 'Celsi R Hamid', 2, 2, 1, 3, 'Kab.Gorontalo', 'HULAWALU', '2010-12-24', 1, 3, 32, NULL),
 (405, '7501160107530009', '75011624020700608', 'Toke Hamid', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1953-07-01', 1, 4, 3, NULL),
-(406, '75011646035000001', '75011624020700608', 'Zenab K Datu', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1950-03-06', 1, 4, 2, '2020-12-28 20:01:45'),
+(406, '75011646035000001', '75011624020700608', 'Zenab K Datu', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1950-03-06', 1, 4, 2, NULL),
 (407, '7501161802030001', '75011624020700608', 'Feldiyanto Kasim', 1, 2, 1, 3, 'Pongongaila', 'HULAWALU', '2003-02-18', 1, 9, 33, NULL),
 (408, '7501160506740001', '7501162402070609', 'Sukri Hulopi', 1, 1, 1, 1, 'Gorontalo', 'HULAWALU', '1974-06-05', 1, 11, 11, NULL),
 (409, '750116510780001', '7501162402070609', 'Norma Hamid', 2, 1, 1, 2, 'Gorontalo', 'HULAWALU', '1978-10-16', 1, 5, 2, NULL),
@@ -715,9 +688,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama_lengkap`, `nip`, `username`, `email`, `tipe`, `password`, `last_login`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, 'admin', 'adminsikdes@gmail.com', 2, '$2y$10$7Rz9.CgaZdVVKEwi4Ntv6.RzBPWRRLhob6SBShvuWlrL1vxbt1h/W', '2021-01-02 09:28:16', 'anluMIHR7Nt3tPAl6BhNmbqcckXF8C9MHJzHWCwlF78BkTICreBFiKgeLvm5', NULL, '2021-01-02 09:28:16'),
-(4, NULL, NULL, 'febrizki', 'mawikere@gmail.com', 1, '$2y$10$cyl3bXLxMcFBRCv3CeVYF.fKR8RXHXWCtoBsOEjwa/9PuiI4rMD02', '2021-01-06 00:17:59', 'MSi71LFZoBMo7GNksj2yFnsEwwelXrwb17fCbLysESB1RFSUUmwmn14JYGQz', '2020-11-26 06:40:14', '2021-01-06 00:17:59'),
-(6, 'Febrizki Mawikere', '7501132802000002', 'kepaladesa', 'kades@gmail.com', 3, '$2y$10$lF8kdJ6h8w/3BVMiW9Sdu.CjediBjIgJiftBvONxh2JTqFGN5jr0G', '2020-12-15 03:48:32', 'kWReqSyXNGaQz2qmnS87CeNa59TvRpySiupzk8u6Zq5ccTOZYhvjtpAqiA4Q', '2020-11-26 06:40:14', '2020-12-15 03:48:32');
+(1, NULL, NULL, 'admin', 'adminsikdes@gmail.com', 2, '$2y$10$7Rz9.CgaZdVVKEwi4Ntv6.RzBPWRRLhob6SBShvuWlrL1vxbt1h/W', '2021-01-08 02:37:17', 'Bt8n3PxSbWpyUGwByJ1kNtDq41dgeFaG597rUnF3hsralNaOv2jkzT1W5KP4', NULL, '2021-01-08 02:37:17'),
+(4, NULL, NULL, 'febrizki', 'mawikere@gmail.com', 1, '$2y$10$cyl3bXLxMcFBRCv3CeVYF.fKR8RXHXWCtoBsOEjwa/9PuiI4rMD02', '2021-01-08 03:36:13', 'A9NSXsSpwyMIoqJae0GYG7Av67D1Z4uuC0nJWyuzXxTZBwp1R7AaaVZ5FAWF', '2020-11-26 06:40:14', '2021-01-08 03:36:13'),
+(6, 'Febrizki Mawikere', '7501132802000002', 'kepaladesa', 'kades@gmail.com', 3, '$2y$10$IJi5ACykw5uiVWxycDFgvuQOpFNLqQ424RTJxNL.2dq2.lvmOkleS', '2021-01-08 03:07:44', 'IrbiSxzwvZro42d69zxJY5rEQxWpe712HqAu3r3bli4sg84KdAdWdJToG2Nz', '2020-11-26 06:40:14', '2021-01-08 03:07:44');
 
 --
 -- Indexes for dumped tables
@@ -733,12 +706,6 @@ ALTER TABLE `migrations`
 -- Indexes for table `m_agama`
 --
 ALTER TABLE `m_agama`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `m_cacat`
---
-ALTER TABLE `m_cacat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -799,12 +766,6 @@ ALTER TABLE `m_agama`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `m_cacat`
---
-ALTER TABLE `m_cacat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT for table `m_pekerjaan`
 --
 ALTER TABLE `m_pekerjaan`
@@ -820,7 +781,7 @@ ALTER TABLE `m_pendidikan`
 -- AUTO_INCREMENT for table `t_mutasi`
 --
 ALTER TABLE `t_mutasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `t_penduduk`

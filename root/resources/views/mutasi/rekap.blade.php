@@ -30,7 +30,9 @@
                     <input type="number" name="tahun" id="tahun" min="2010" value="2020" max="2100" class="form-control">
                  </div>
                   <button type="submit" class="btn btn-primary">Cetak</button>
+                  @if(Auth::user()->tipe != 3)
                   <a href="{{url('mutasi')}}"><button type="button" class="btn btn-secondary">Kembali</button></a>
+                  @endif
                 </form>
             </div>
         </div>

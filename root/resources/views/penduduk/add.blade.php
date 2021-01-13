@@ -137,6 +137,12 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row form-group">
+                            <div class="col col-md-4"><label for="foto" class="form-control-label">Pas Foto (Max : 2 MB)</label></div>
+                            <div class="col-12 col-md-8">
+                                <input type="file" name="foto" id="foto" class="form-control">
+                            </div>
+                        </div>
                    </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
