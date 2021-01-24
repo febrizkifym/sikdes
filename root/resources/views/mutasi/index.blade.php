@@ -38,6 +38,8 @@
                         Meninggal
                         @elseif($m->status == 4)
                         Pisah Kartu Keluarga
+                        @elseif($m->status == 5)
+                        Penduduk Lahir
                         @endif
                     </td>
                     <td>{{date('d F Y',strtotime($m->created_at))}}</td>

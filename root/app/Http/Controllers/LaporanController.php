@@ -188,9 +188,9 @@ class LaporanController extends Controller
         $data = Mutasi::whereBetween("t_mutasi.created_at", [$tanggal, $tanggal2]);
         // if ($data->count() > 0) {
             $namaFile = 'laporanPenduduk_' . date('dmY');
-            $pdf = PDF::loadView('laporan.rekap', ['data' => $data->get(), 'bulan' => $bulan, 'tahun' => $tahun, 'kode_bulan' => $kode_bulan])->setPaper('a4', 'landscape');
-            return $pdf->stream();
-            // return view('laporan.rekap', ['data' => $data->get(), 'bulan' => $bulan, 'tahun' => $tahun, 'kode_bulan' => $kode_bulan]);
+            // $pdf = PDF::loadView('laporan.rekap', ['data' => $data->get(), 'bulan' => $bulan, 'tahun' => $tahun, 'kode_bulan' => $kode_bulan])->setPaper('a4', 'landscape');
+            // return $pdf->stream();
+            return view('laporan.rekap', ['data' => $data->get(), 'bulan' => $bulan, 'tahun' => $tahun, 'kode_bulan' => $kode_bulan]);
         // } else {
         
             // return redirect(route('mutasi.laporan'))->with('warning', 'Tidak ada data di bulan yang dipilih');

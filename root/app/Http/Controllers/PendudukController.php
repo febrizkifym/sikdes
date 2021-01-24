@@ -100,6 +100,16 @@ class PendudukController extends Controller
         $p->id_pekerjaan = $r->pekerjaan;
         // $p->id_cacat = $r->cacat;
         
+        //upload foto
+        if($r->foto){
+            $foto = $r->file('foto');
+            $foto_filename = Str::slug($p->nik,'_'). '.' . $foto->getClientOriginalExtension();
+            Image::make($foto)->resize(371,557,function($const){
+                $const->aspectRatio();
+            })->save($this->path.'/'.$foto_filename);
+            $p->foto = $foto_filename;
+        }
+        
         if(($p->kedudukan == 1 || $p->kedudukan == 2) && ($usia < 17)){
             return redirect(route('penduduk.add'))->with('warning','Terjadi kesalahan');
         }

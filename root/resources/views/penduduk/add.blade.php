@@ -32,6 +32,11 @@
                             <div class="col col-md-4"><label class="form-control-label">NIK</label></div>
                             <div class="col-12 col-md-8">
                                 <input required type="text" name="nik" placeholder="Nomor Induk Kependudukan" class="form-control">
+                                @if($errors->has('nik'))
+                                <div class="alert alert-danger" style="margin-top:5px                                                                                                                                                                                                                                                                                             ;text-transform:capitalize">
+                                    {{$errors->first('nik')}}
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="row form-group">
